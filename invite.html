@@ -300,7 +300,8 @@ const qs = new URLSearchParams(location.search);
 function getSlug(){
   if (qs.get("s")) return qs.get("s");
   const last = decodeURIComponent(location.pathname.replace(/\/+$/,"").split("/").pop() || "");
-  if (last && !/\.html?$/i.test(last)) return last;
+  // "invite" — GitHub Pages invite.html'ни .html'сиз ҳам очади
+  if (last && last !== "invite" && !/\.html?$/i.test(last)) return last;
   return "aziz-madina";
 }
 

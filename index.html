@@ -228,7 +228,7 @@ dialog::backdrop{background:rgba(30,16,41,.55)}
         <p data-t="heroText"></p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#shablonlar" data-t="cta1">Шаблонни танлаш</a>
-          <button class="btn btn-soft" id="demoBtn" data-t="cta2">Намунани кўриш</button>
+          <a class="btn btn-soft" id="demoBtn" href="invite.html" data-t="cta2">Намунани кўриш</a>
         </div>
         <div class="hero-note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
@@ -314,6 +314,7 @@ dialog::backdrop{background:rgba(30,16,41,.55)}
         <p id="sheetDesc"></p>
         <span class="amount" id="sheetPrice"></span>
         <button class="btn btn-primary" id="chooseBtn" data-t="choose"></button>
+        <a class="btn btn-soft" id="sheetDemo" href="invite.html" data-t="openDemo" hidden></a>
       </div>
     </div>
   </div>
@@ -322,6 +323,9 @@ dialog::backdrop{background:rgba(30,16,41,.55)}
 <script>
 /* ---------- Нархлар (₸). Тўй нархи ҳали тасдиқланмаган ---------- */
 const PRICES = { toy: 2990, tugilgan: 1990, tabrik: 990 };
+
+/* ---------- Жонли намуна (демо таклифнома) тил бўйича ---------- */
+const DEMO_URL = { "uz-Cyrl":"invite.html", "kk":"invite.html?s=nurlan-asel" };
 
 /* ---------- Алоқа ---------- */
 const WA = { href:"https://wa.me/77759018100", label:"+7 775 901 8100" };
@@ -335,7 +339,7 @@ const ICONS = {
   tilak:'<path d="M8 14h32v22H8Z"/><path d="M8 14l16 12 16-12"/>'
 };
 const TEMPLATES = [
-  {id:"saroy",   cat:"toy",      kind:"wedding",  s1:"#FFF8EE", s2:"#F1DAB4", sc:"#7E5A1A", names:"Азиз & Мадина", date:"2026-12-12T18:00:00+05:00"},
+  {id:"saroy",   cat:"toy",      kind:"wedding",  s1:"#FFF8EE", s2:"#F1DAB4", sc:"#7E5A1A", names:"Азиз & Мадина", date:"2026-12-12T18:00:00+05:00", live:true},
   {id:"gul",     cat:"toy",      kind:"wedding",  s1:"#FFF2F6", s2:"#F9CFDF", sc:"#9C2C56", names:"Жасур & Нигора", date:"2026-12-19T18:00:00+05:00"},
   {id:"sham",    cat:"tugilgan", kind:"birthday", s1:"#2B2119", s2:"#4A3828", sc:"#EED092", names:"Камола", date:"2026-12-20T19:00:00+05:00"},
   {id:"tilak",   cat:"tabrik",   kind:"greeting", s1:"#F7F2FF", s2:"#DDCBFF", sc:"#4E2AA6", names:"Азиза"}
@@ -362,7 +366,7 @@ const UI = {
        ["Тўловдан кейин матнни ўзгартирса бўладими?","Ҳа, исм, вақт ва манзилни кейин ҳам ўзгартириш мумкин."],
        ["Таклифнома қанча вақт ишлайди?","Тадбир кунидан кейин яна 30 кун очиқ туради."]],
   ctaTitle:"Биринчи таклифномангизни яратинг", ctaBtn:"Бошлаш",
-  offer:"Оммавий оферта", privacy:"Махфийлик сиёсати", contact:"Алоқа", choose:"Шу шаблонни танлаш",
+  offer:"Оммавий оферта", privacy:"Махфийлик сиёсати", contact:"Алоқа", choose:"Шу шаблонни танлаш", openDemo:"Намунани очиш",
   contactText:"Савол бўлса, WhatsApp'га ёзинг.",
   word:{invite:"Таклифнома", greet:"Табрик"},
   occ:{toy:"Тўй",tugilgan:"Туғилган кун",tabrik:"Туғилган кун"},
@@ -389,7 +393,7 @@ const UI = {
        ["Төлемнен кейін мәтінді өзгертуге бола ма?","Иә, есімді, уақытты және мекенжайды кейін де өзгертуге болады."],
        ["Шақыру қанша уақыт жұмыс істейді?","Іс-шарадан кейін тағы 30 күн ашық тұрады."]],
   ctaTitle:"Алғашқы шақыруыңызды жасаңыз", ctaBtn:"Бастау",
-  offer:"Жария оферта", privacy:"Құпиялылық саясаты", contact:"Байланыс", choose:"Осы үлгіні таңдау",
+  offer:"Жария оферта", privacy:"Құпиялылық саясаты", contact:"Байланыс", choose:"Осы үлгіні таңдау", openDemo:"Мысалды ашу",
   contactText:"Сұрағыңыз болса, WhatsApp-қа жазыңыз.",
   word:{invite:"Шақыру", greet:"Құттықтау"},
   occ:{toy:"Той",tugilgan:"Туған күн",tabrik:"Туған күн"},
@@ -468,6 +472,7 @@ function render(){
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang===lang));
 
   $("#heroPhone").innerHTML = phone(TEMPLATES[0], false);
+  $("#demoBtn").href = DEMO_URL[lang];
 
   $("#features").innerHTML = d.feats.map((f,i)=>`
     <div class="feature"><span class="ic">${svg(FEAT_ICONS[i])}</span><h3>${esc(f[0])}</h3><p>${esc(f[1])}</p></div>`).join("");
@@ -512,6 +517,8 @@ function fillSheet(t){
   $("#sheetSign").textContent = tname(t.id);
   $("#sheetDesc").textContent = d.desc[t.id];
   $("#sheetPrice").textContent = price(PRICES[t.cat]);
+  $("#sheetDemo").hidden = !t.live;            // жонли саҳифаси тайёр шаблонлар учун
+  $("#sheetDemo").href = DEMO_URL[lang];
   tickCountdowns();
 }
 
@@ -531,7 +538,6 @@ document.querySelector(".lang").addEventListener("click", e=>{
   render();
 });
 $("#gallery").addEventListener("click", e=>{ const c = e.target.closest(".tpl"); if (c) openSheet(c.dataset.id); });
-$("#demoBtn").addEventListener("click", ()=>openSheet("saroy"));
 $("#sheetClose").addEventListener("click", closeSheet);
 $("#sheetWrap").addEventListener("click", e=>{ if (e.target.id==="sheetWrap") closeSheet(); });
 sheet.addEventListener("close", ()=>{ current = null; });
