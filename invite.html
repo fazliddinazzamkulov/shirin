@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="uz-Cyrl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Таклифнома</title>
+<!-- Шахсий таклифномалар қидирув тизимларида чиқмаслиги керак -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#F8EEDC">
+<!-- WhatsApp превьюси. 4-босқичда сервер ҳар бир таклифнома учун сарлавҳа ва расмни алмаштиради -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Таклифнома">
+<meta property="og:description" content="Сизни тўйимизга таклиф этамиз">
+<meta property="og:image" content="https://shirin.day/assets/saroy/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Shirin: таклифнома саҳифаси. Битта саҳифа, ранглар ва расмлар шаблон мавзусидан (THEMES) олинади. */
+:root{
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  /* мавзу ранглари: JS шаблонга қараб алмаштиради */
+  --paper:#F8EEDC; --ink:#3F2F17; --muted:#6F5B3B; --accent:#8A6424; --line:rgba(138,100,36,.32);
+  --btn:#8A6424; --btn-ink:#FFFFFF; --bg:none;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{min-height:100svh;background:var(--paper);color:var(--ink);font:400 18px/1.55 var(--sans);-webkit-font-smoothing:antialiased;text-align:center;overflow-x:hidden}
+/* Фон экранга маҳкам: iOS'да background-attachment:fixed ишламагани учун псевдоэлемент */
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:var(--paper) var(--bg) center/cover no-repeat}
+body.locked{overflow:hidden}
+[hidden]{display:none!important}
+img{display:block;max-width:100%;height:auto}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:12px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 28px;border:0;border-radius:999px;background:var(--btn);color:var(--btn-ink);font:600 18px/1 var(--sans);text-decoration:none;cursor:pointer;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn svg{width:22px;height:22px;flex:none}
+.label{margin:0 0 14px;font:600 13px/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.word{margin:0;font:700 clamp(46px,13vw,60px)/1 var(--serif);color:var(--accent);letter-spacing:-.01em}
+
+/* ---------- Конверт ---------- */
+.cover{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(20px,5vh,40px);
+  padding:max(24px,env(safe-area-inset-top)) 20px max(24px,env(safe-area-inset-bottom));background:var(--paper) var(--bg) center/cover no-repeat;
+  transition:opacity .6s ease .7s,visibility 0s linear 1.3s}
+.cover.open{opacity:0;visibility:hidden}
+.env{position:relative;width:min(86vw,400px);cursor:pointer;transition:transform .8s cubic-bezier(.55,0,.8,.2) .35s,opacity .5s ease .6s}
+.env .seal{position:absolute;left:50%;top:72%;width:27%;transform:translate(-50%,-50%);transition:transform .4s ease,opacity .4s ease}
+.cover.open .seal{transform:translate(-50%,-50%) scale(1.3);opacity:0}
+.cover.open .env{transform:translateY(55vh);opacity:0}
+.cover.open .word,.cover.open .btn{opacity:0;transition:opacity .3s}
+
+/* ---------- Асосий қисм ---------- */
+main{position:relative;max-width:560px;margin:0 auto;padding-inline:max(24px,env(safe-area-inset-left)) max(24px,env(safe-area-inset-right))}
+.corner{position:absolute;width:clamp(96px,30vw,150px);pointer-events:none}
+.corner.tl{top:0;left:0}
+.corner.tr{top:0;right:0;transform:scaleX(-1)}
+.corner.bl{bottom:0;left:0;transform:scaleY(-1)}
+.corner.br{bottom:0;right:0;transform:scale(-1)}
+
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding-block:clamp(72px,12vh,120px) 48px}
+.hero .art{width:min(82vw,380px)}
+.names{margin:0;display:flex;flex-direction:column;align-items:center;font:700 clamp(36px,10.5vw,46px)/1.08 var(--serif);text-wrap:balance}
+.names .amp{font:600 italic clamp(28px,8vw,34px)/1.2 var(--serif);color:var(--accent)}
+.hero .divider{width:min(70vw,300px);margin-top:4px}
+
+/* Очилиш анимацияси: элементлар навбат билан чиқади */
+.hero > *{opacity:0;transform:translateY(14px)}
+body.go .hero > *{opacity:1;transform:none;transition:opacity .8s ease,transform .8s ease;transition-delay:calc(.55s + var(--i,0) * .14s)}
+
+.block{padding-block:40px;opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+.block.in{opacity:1;transform:none}
+.guest{margin:0 0 10px;font:700 clamp(28px,8vw,34px)/1.15 var(--serif);color:var(--accent)}
+.lead{margin:0 auto;max-width:30ch;font-size:19px;line-height:1.55;text-wrap:balance}
+
+.date{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:30px}
+.date .wd{font:600 14px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.date .row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;width:min(100%,330px)}
+.date .row span{padding-block:12px;border-block:1px solid var(--line);font:600 14px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase}
+.date .row b{font:700 68px/.9 var(--serif);color:var(--accent);font-variant-numeric:lining-nums}
+.date .time{font:600 21px/1.2 var(--sans)}
+
+.cd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:min(100%,380px);margin:0 auto}
+.cd div{display:flex;flex-direction:column;gap:6px;padding:16px 0 12px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.55)}
+.cd b{font:600 32px/1 var(--sans);color:var(--accent);font-variant-numeric:tabular-nums lining-nums;letter-spacing:-.02em}
+.cd span{font-size:14px;color:var(--muted)}
+
+.venue{margin:0;font:700 clamp(28px,8vw,34px)/1.15 var(--serif);text-wrap:balance}
+.addr{margin:8px auto 24px;max-width:32ch;color:var(--muted)}
+.hosts{margin:0;font:700 clamp(28px,8vw,34px)/1.15 var(--serif);text-wrap:balance}
+
+.foot{position:relative;min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:14px;padding:32px 0 calc(150px + env(safe-area-inset-bottom,0px))}
+.foot .corner{bottom:env(safe-area-inset-bottom,0px)}
+/* Шаблон номи: майда ва ярим шаффоф, имзо каби */
+.sign{font-size:12px;letter-spacing:.16em;opacity:.5}
+.sign a{color:inherit;text-decoration:none}
+.report{border:0;background:none;padding:10px;font-size:14px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+
+/* ---------- Мусиқа тугмаси ---------- */
+.sound{position:fixed;z-index:20;top:max(14px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right));width:48px;height:48px;border-radius:50%;
+  border:1px solid var(--line);background:rgba(255,255,255,.8);color:var(--accent);display:grid;place-items:center;cursor:pointer}
+.sound svg{width:22px;height:22px}
+.sound .off{display:none}
+.sound[aria-pressed="false"] .on{display:none}
+.sound[aria-pressed="false"] .off{display:block}
+
+/* ---------- Шикоят ойнаси ---------- */
+dialog{width:min(100% - 32px,420px);border:0;border-radius:24px;padding:24px;background:#fff;color:#2A2118;text-align:left}
+dialog::backdrop{background:rgba(30,20,10,.5)}
+dialog h2{margin:0 0 14px;font:700 30px/1.1 var(--serif)}
+dialog fieldset{border:0;margin:0 0 14px;padding:0;display:flex;flex-direction:column}
+dialog label.opt{display:flex;align-items:center;gap:12px;min-height:46px;font-size:17px;cursor:pointer}
+dialog input[type=radio]{width:20px;height:20px;accent-color:var(--accent);margin:0}
+dialog textarea{width:100%;min-height:84px;padding:12px;border:1px solid #DDD2C2;border-radius:14px;font:inherit;font-size:16px;resize:vertical}
+dialog .row{display:flex;gap:10px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}
+dialog .ghost{min-height:48px;padding:0 18px;border:0;border-radius:999px;background:#F3EEE6;cursor:pointer;font-weight:600}
+dialog .btn{min-height:48px;font-size:16px}
+dialog .msg{margin:12px 0 0;font-size:16px}
+
+/* ---------- Топилмади ---------- */
+.missing{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px}
+.missing h1,.missing h2{margin:0;font:700 32px/1.1 var(--serif);color:var(--accent);text-wrap:balance}
+.missing p{margin:0;color:var(--muted);max-width:32ch}
+.missing p:nth-of-type(1){padding-bottom:22px;margin-bottom:12px;border-bottom:1px solid var(--line)}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+  .hero > *,.block{opacity:1;transform:none}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- Конверт: очилгандан кейин йўқолади -->
+<div class="cover" id="cover" hidden>
+  <p class="word" data-word></p>
+  <div class="env" id="env">
+    <img id="envImg" alt="">
+    <img class="seal" id="sealImg" alt="">
+  </div>
+  <button class="btn" id="openBtn" type="button">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-6 9 6v11H3Z"/><path d="M3 9l9 6 9-6"/></svg>
+    <span data-t="open"></span>
+  </button>
+</div>
+
+<main id="main" hidden>
+  <img class="corner tl" data-corner alt=""><img class="corner tr" data-corner alt="">
+
+  <section class="hero">
+    <img class="art" id="art" alt="" style="--i:0">
+    <h1 class="word" data-word style="--i:1"></h1>
+    <p class="names" style="--i:2"><span id="n1"></span><span class="amp">&amp;</span><span id="n2"></span></p>
+    <img class="divider" id="divider" alt="" style="--i:3">
+  </section>
+
+  <section class="block">
+    <p class="guest" id="guest" hidden></p>
+    <p class="lead" id="lead"></p>
+    <div class="date">
+      <span class="wd" id="wd"></span>
+      <div class="row"><span id="mon"></span><b id="day"></b><span id="yr"></span></div>
+      <span class="time" id="time"></span>
+    </div>
+  </section>
+
+  <section class="block" id="cdBlock">
+    <h3 class="label" id="cdLabel"></h3>
+    <div class="cd" id="cd"></div>
+  </section>
+
+  <section class="block" id="venueBlock">
+    <h3 class="label" data-t="venue"></h3>
+    <p class="venue" id="venue"></p>
+    <p class="addr" id="addr"></p>
+    <a class="btn" id="mapBtn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      <span data-t="map"></span>
+    </a>
+  </section>
+
+  <section class="block" id="hostsBlock">
+    <h3 class="label" data-t="hosts"></h3>
+    <p class="hosts" id="hosts"></p>
+  </section>
+
+  <footer class="foot">
+    <img class="corner bl" data-corner alt=""><img class="corner br" data-corner alt="">
+    <span class="sign"><span id="tplName"></span> · <a href="https://shirin.day">shirin.day</a></span>
+    <button class="report" id="reportBtn" type="button" data-t="report"></button>
+  </footer>
+</main>
+
+<div class="missing" id="missing" hidden></div>
+
+<button class="sound" id="sound" type="button" aria-pressed="true" hidden>
+  <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4Z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+  <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4Z"/><path d="M17 9.5l5 5M22 9.5l-5 5"/></svg>
+</button>
+
+<dialog id="report" aria-labelledby="repTitle">
+  <form id="repForm" method="dialog">
+    <h2 id="repTitle"></h2>
+    <fieldset id="reasons"></fieldset>
+    <textarea id="repComment" maxlength="500"></textarea>
+    <p class="msg" id="repMsg" role="status"></p>
+    <div class="row">
+      <button class="ghost" type="button" id="repCancel"></button>
+      <button class="btn" type="submit" id="repSend"></button>
+    </div>
+  </form>
+</dialog>
+
+<audio id="music" preload="none" loop></audio>
+
+<script>
+/* ===== Шаблон мавзулари. Ҳар бир шаблон: ранглар, расмлар папкаси, асосий расм, мусиқа ===== */
+const THEMES = {
+  saroy: {
+    name: "Saroy",
+    dir: "assets/saroy/",
+    art: "palace.webp",
+    music: "palace-first-dance",
+    colors: { "--paper":"#F8EEDC", "--ink":"#3F2F17", "--muted":"#6F5B3B", "--accent":"#8A6424", "--line":"rgba(138,100,36,.32)", "--btn":"#8A6424", "--btn-ink":"#FFFFFF" }
+  }
+};
+
+/* ===== Матнлар ===== */
+const T = {
+  "uz-Cyrl": {
+    word: { wedding:"Таклифнома" },
+    open: "Очиш",
+    dear: n => `Ҳурматли ${n}!`,
+    lead: { wedding:"Сизни никоҳ тўйимизга лутфан таклиф этамиз" },
+    months: ["январь","февраль","март","апрель","май","июнь","июль","август","сентябрь","октябрь","ноябрь","декабрь"],
+    weekdays: ["якшанба","душанба","сешанба","чоршанба","пайшанба","жума","шанба"],
+    at: t => `соат ${t}`,
+    until: { wedding:"Тўйгача қолди" },
+    units: ["кун","соат","дақиқа","сония"],
+    venue: "Манзил", map: "2GIS'да очиш", hosts: "Ҳурмат билан",
+    report: "Шикоят қилиш", repTitle: "Шикоят",
+    reasons: ["Нотўғри маълумот","Ҳақоратли мазмун","Фирибгарлик","Бошқа сабаб"],
+    comment: "Изоҳ (ихтиёрий)", send: "Юбориш", cancel: "Бекор қилиш",
+    pick: "Сабабни танланг", thanks: "Раҳмат! Шикоятингиз юборилди.", fail: "Юборилмади. Кейинроқ қайта уриниб кўринг.",
+    soundOn: "Мусиқани ёқиш", soundOff: "Мусиқани ўчириш"
+  },
+  "kk": {
+    word: { wedding:"Шақыру" },
+    open: "Ашу",
+    dear: n => `Құрметті ${n}!`,
+    lead: { wedding:"Сізді үйлену тойымыздың қадірлі қонағы болуға шақырамыз" },
+    months: ["қаңтар","ақпан","наурыз","сәуір","мамыр","маусым","шілде","тамыз","қыркүйек","қазан","қараша","желтоқсан"],
+    weekdays: ["жексенбі","дүйсенбі","сейсенбі","сәрсенбі","бейсенбі","жұма","сенбі"],
+    at: t => `сағат ${t}`,
+    until: { wedding:"Тойға дейін қалды" },
+    units: ["күн","сағат","минут","секунд"],
+    venue: "Мекенжай", map: "2GIS-те ашу", hosts: "Құрметпен",
+    report: "Шағымдану", repTitle: "Шағым",
+    reasons: ["Қате мәлімет","Қорлайтын мазмұн","Алаяқтық","Басқа себеп"],
+    comment: "Түсініктеме (міндетті емес)", send: "Жіберу", cancel: "Болдырмау",
+    pick: "Себебін таңдаңыз", thanks: "Рақмет! Шағымыңыз жіберілді.", fail: "Жіберілмеді. Кейінірек қайталап көріңіз.",
+    soundOn: "Музыканы қосу", soundOff: "Музыканы өшіру"
+  }
+};
+/* Тил номаълум бўлгани учун икки тилда: [сарлавҳа, матн] */
+const MISSING = {
+  missing: [["Таклифнома топилмади", "Ҳаволани текширинг ёки юборган одамдан сўранг."],
+            ["Шақыру табылмады", "Сілтемені тексеріңіз немесе жіберген адамнан сұраңыз."]],
+  expired: [["Таклифнома муддати тугаган", "Тадбир бўлиб ўтган."],
+            ["Шақырудың мерзімі өтті", "Іс-шара өтіп кеткен."]]
+};
+
+/* ===== Демо таклифномалар (база уланмагунча). 4-босқичда маълумот PocketBase'дан келади ===== */
+const DEMO = {
+  "aziz-madina": {
+    template:"saroy", kind:"wedding", lang:"uz-Cyrl",
+    name1:"Азиз", name2:"Мадина", date:"2026-12-12T18:00:00+05:00",
+    venue:"«Гулистон» тўйхонаси", address:"Шымкент, Тауке хан шоҳ кўчаси, 45",
+    map:"https://2gis.kz/shymkent/search/" + encodeURIComponent("Тауке хана 45"),
+    lead:"", hosts:"Каримовлар оиласи", music:"palace-first-dance"
+  },
+  "nurlan-asel": {
+    template:"saroy", kind:"wedding", lang:"kk",
+    name1:"Нұрлан", name2:"Әсел", date:"2026-12-19T18:00:00+05:00",
+    venue:"«Алтын Орда» тойханасы", address:"Шымкент, Тәуке хан даңғылы, 45",
+    map:"https://2gis.kz/shymkent/search/" + encodeURIComponent("Тауке хана 45"),
+    lead:"", hosts:"Сейтқалиевтер отбасы", music:"ever-after-waltz"
+  }
+};
+
+const $ = s => document.querySelector(s);
+const qs = new URLSearchParams(location.search);
+
+/* Ҳавола: shirin.day/aziz-madina → slug "aziz-madina". Синов учун: invite.html?s=nurlan-asel */
+function getSlug(){
+  if (qs.get("s")) return qs.get("s");
+  const last = decodeURIComponent(location.pathname.replace(/\/+$/,"").split("/").pop() || "");
+  if (last && !/\.html?$/i.test(last)) return last;
+  return "aziz-madina";
+}
+
+/* Маълумотни олиш. Натижа: {state:"ok", data} | {state:"missing"} | {state:"expired"} */
+async function loadInvite(slug){
+  if (DEMO[slug]) return { state:"ok", data: DEMO[slug] };
+  try {
+    const r = await fetch(`/api/i/${encodeURIComponent(slug)}`, { headers:{ Accept:"application/json" } });
+    if (r.status === 410) return { state:"expired" };
+    if (r.ok) return { state:"ok", data: await r.json() };
+  } catch(e) {}
+  return { state:"missing" };
+}
+
+/* Меҳмон исми ?g=Анвар. Фақат матн сифатида қўйилади (textContent) */
+function guestName(){
+  const g = (qs.get("g") || "").replace(/[\u0000-\u001F\u007F<>]/g, "").replace(/\s+/g, " ").trim();
+  return g.slice(0, 40);
+}
+
+/* Сана тадбир жойининг вақтида кўрсатилади (ISO даги +05:00), меҳмон телефонидаги минтақадан қатъи назар */
+function eventParts(iso){
+  const m = /([+-])(\d\d):?(\d\d)$/.exec(iso);
+  const off = m ? (m[1] === "-" ? -1 : 1) * (Number(m[2]) * 60 + Number(m[3])) : 300;
+  const d = new Date(new Date(iso).getTime() + off * 60000);
+  const p = n => String(n).padStart(2, "0");
+  return { day:d.getUTCDate(), month:d.getUTCMonth(), year:d.getUTCFullYear(), wd:d.getUTCDay(), time:`${p(d.getUTCHours())}:${p(d.getUTCMinutes())}` };
+}
+
+let L, data, slug;
+
+function render(res){
+  if (res.state !== "ok"){
+    (MISSING[res.state] || MISSING.missing).forEach(([t, s], i) => {
+      const h = document.createElement(i ? "h2" : "h1"), p = document.createElement("p");
+      h.textContent = t; p.textContent = s;
+      $("#missing").append(h, p);
+    });
+    $("#missing").hidden = false; document.body.classList.remove("locked");
+    return;
+  }
+  data = res.data;
+  const theme = THEMES[data.template] || THEMES.saroy;
+  L = T[data.lang] || T["uz-Cyrl"];
+  const kind = data.kind || "wedding";
+  const root = document.documentElement;
+  root.lang = data.lang || "uz-Cyrl";
+  for (const [k, v] of Object.entries(theme.colors)) root.style.setProperty(k, v);
+  root.style.setProperty("--bg", `url("${theme.dir}bg.webp")`);
+  document.querySelector('meta[name="theme-color"]').content = theme.colors["--paper"];
+
+  const word = L.word[kind];
+  document.title = `${data.name1} & ${data.name2} · ${word}`;
+  document.querySelectorAll("[data-word]").forEach(el => el.textContent = word);
+  document.querySelectorAll("[data-t]").forEach(el => { const v = L[el.dataset.t]; if (typeof v === "string") el.textContent = v; });
+
+  $("#envImg").src = theme.dir + "envelope.webp";
+  $("#sealImg").src = theme.dir + "seal.webp";
+  $("#art").src = theme.dir + theme.art;
+  $("#divider").src = theme.dir + "divider.webp";
+  document.querySelectorAll("[data-corner]").forEach(el => el.src = theme.dir + "corner.webp");
+
+  $("#n1").textContent = data.name1;
+  $("#n2").textContent = data.name2;
+
+  const g = guestName();
+  if (g){ $("#guest").textContent = L.dear(g); $("#guest").hidden = false; }
+  $("#lead").textContent = data.lead || L.lead[kind];
+
+  const e = eventParts(data.date);
+  $("#wd").textContent = L.weekdays[e.wd];
+  $("#mon").textContent = L.months[e.month];
+  $("#day").textContent = e.day;
+  $("#yr").textContent = e.year;
+  $("#time").textContent = L.at(e.time);
+
+  $("#cdLabel").textContent = L.until[kind];
+  $("#cd").innerHTML = L.units.map(u => `<div><b>0</b><span></span></div>`).join("");
+  $("#cd").querySelectorAll("span").forEach((s, i) => s.textContent = L.units[i]);
+  tick(); setInterval(tick, 1000);
+
+  $("#venue").textContent = data.venue || "";
+  $("#addr").textContent = data.address || "";
+  if (data.map) $("#mapBtn").href = data.map; else $("#mapBtn").hidden = true;
+  if (!data.venue && !data.address) $("#venueBlock").hidden = true;
+
+  if (data.hosts) $("#hosts").textContent = data.hosts; else $("#hostsBlock").hidden = true;
+
+  $("#tplName").textContent = theme.name;
+  $("#music").src = `assets/music/${data.music || theme.music}.mp3`;
+  $("#sound").setAttribute("aria-label", L.soundOff);
+  $("#openBtn").setAttribute("aria-label", L.open);
+
+  $("#main").hidden = false;
+  $("#cover").hidden = false;
+  revealOnScroll();
+}
+
+/* Тескари санаш */
+function tick(){
+  const ms = new Date(data.date).getTime() - Date.now();
+  if (ms <= 0){ $("#cdBlock").hidden = true; return; }
+  const v = [Math.floor(ms / 864e5), Math.floor(ms / 36e5) % 24, Math.floor(ms / 6e4) % 60, Math.floor(ms / 1e3) % 60];
+  $("#cd").querySelectorAll("b").forEach((b, i) => { const s = String(v[i]); if (b.textContent !== s) b.textContent = s; });
+}
+
+/* Бўлимлар экранга келганда аста чиқади */
+function revealOnScroll(){
+  const blocks = document.querySelectorAll(".block");
+  if (!("IntersectionObserver" in window)) { blocks.forEach(b => b.classList.add("in")); return; }
+  const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } }), { threshold: .15 });
+  blocks.forEach(b => io.observe(b));
+}
+
+/* ===== Конвертни очиш ва мусиқа ===== */
+const audio = $("#music");
+let opened = false, resumeOnShow = false;
+
+function fadeIn(){
+  // iOS'да volume ўзгармайди — у ерда мусиқа дарров тўлиқ овозда бошланади
+  audio.volume = 0;
+  const t0 = performance.now();
+  const step = t => { const k = Math.min(1, (t - t0) / 1800); audio.volume = k; if (k < 1) requestAnimationFrame(step); };
+  requestAnimationFrame(step);
+}
+function setSound(on){
+  $("#sound").setAttribute("aria-pressed", on);
+  $("#sound").setAttribute("aria-label", on ? L.soundOff : L.soundOn);
+}
+function playMusic(){
+  const p = audio.play();
+  if (p && p.catch) p.catch(() => setSound(false));
+  setSound(true);
+}
+function openInvite(){
+  if (opened) return; opened = true;
+  fadeIn(); playMusic();
+  $("#cover").classList.add("open");
+  document.body.classList.remove("locked");
+  document.body.classList.add("go");
+  $("#sound").hidden = false;
+  setTimeout(() => $("#cover").remove(), 1400);
+}
+$("#openBtn").addEventListener("click", openInvite);
+$("#env").addEventListener("click", openInvite);
+
+$("#sound").addEventListener("click", () => {
+  if (audio.paused){ playMusic(); } else { audio.pause(); setSound(false); }
+});
+// Меҳмон бошқа иловага ўтса мусиқа тўхтайди, қайтса давом этади
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden){ if (!audio.paused){ audio.pause(); resumeOnShow = true; } }
+  else if (resumeOnShow){ resumeOnShow = false; playMusic(); }
+});
+
+/* ===== Шикоят: 4-босқичда PocketBase "reports" тўпламига тушади, админкада кўринади ===== */
+const dlg = $("#report");
+const REASON_CODES = ["wrong_info", "offensive", "fraud", "other"]; // L.reasons билан бир хил тартибда
+$("#reportBtn").addEventListener("click", () => {
+  $("#repTitle").textContent = L.repTitle;
+  $("#reasons").innerHTML = "";
+  L.reasons.forEach((r, i) => {
+    const lab = document.createElement("label"); lab.className = "opt";
+    const inp = document.createElement("input"); inp.type = "radio"; inp.name = "reason"; inp.value = String(i);
+    lab.append(inp, document.createTextNode(r));
+    $("#reasons").append(lab);
+  });
+  $("#repComment").placeholder = L.comment; $("#repComment").value = "";
+  $("#repCancel").textContent = L.cancel; $("#repSend").textContent = L.send; $("#repSend").hidden = false;
+  $("#repMsg").textContent = "";
+  if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
+});
+$("#repCancel").addEventListener("click", () => dlg.close ? dlg.close() : dlg.removeAttribute("open"));
+$("#repForm").addEventListener("submit", async ev => {
+  ev.preventDefault();
+  const picked = $("#repForm").querySelector("input[name=reason]:checked");
+  if (!picked){ $("#repMsg").textContent = L.pick; return; }
+  $("#repSend").disabled = true;
+  try {
+    const r = await fetch("/api/collections/reports/records", {
+      method: "POST", headers: { "Content-Type":"application/json" },
+      body: JSON.stringify({ invite: slug, reason: REASON_CODES[picked.value], comment: $("#repComment").value.trim().slice(0, 500) })
+    });
+    if (!r.ok) throw new Error(r.status);
+    $("#repMsg").textContent = L.thanks; $("#repSend").hidden = true; $("#repCancel").textContent = "OK";
+  } catch(e) {
+    $("#repMsg").textContent = L.fail;
+  } finally { $("#repSend").disabled = false; }
+});
+
+slug = getSlug();
+loadInvite(slug).then(render);
+</script>
+</body>
+</html>
