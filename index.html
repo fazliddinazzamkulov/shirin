@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#FCFAFD">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 /* Shirin v3: serious invitation service. Elegant serif for the moments, Inter for the interface,
    violet for action, pink for warmth, a live phone as the hero. Single light look by choice. */
@@ -20,6 +20,7 @@
   --bg:#FCFAFD; --surface:#FFFFFF; --ink:#1E1029; --muted:#6E6078; --line:#EEE6F2;
   --violet:#6D28D9; --violet-deep:#5B21B6; --pink:#E8458B; --lilac:#F5F0FC; --pink-soft:#FDECF4;
   --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --script:"Bad Script","Segoe Script",cursive; /* ўзбек ва қозоқ ҳарфларининг ҳаммаси бор */
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   color-scheme:light;
   padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
@@ -72,28 +73,33 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .hero-note{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--muted)}
 .hero-note svg{width:20px;height:20px;color:var(--violet);flex:none}
 .hero-visual{position:relative;display:flex;justify-content:center;padding-block:24px}
-.hero-visual::before{content:"";position:absolute;inset:0 6%;border-radius:40px;background:linear-gradient(160deg,var(--lilac),var(--pink-soft))}
+.hero-visual::before{content:"";position:absolute;inset:0 6%;border-radius:40px;background:linear-gradient(160deg,#8B5CF6,#EC4899)}
 
 /* phone */
 /* Контейнер — телефон корпуси: экран ичидаги cqw ўлчамлари (падинглар ҳам) экран кенглигидан ҳисобланади */
 .phone{position:relative;width:100%;max-width:290px;aspect-ratio:9/18.5;min-height:0;container-type:inline-size;border-radius:44px;background:var(--ink);padding:10px;box-shadow:0 30px 60px -20px rgba(45,16,80,.35)}
 .phone.mini{max-width:none;border-radius:30px;padding:6px;box-shadow:0 14px 30px -14px rgba(45,16,80,.3)}
-.screen{position:relative;height:100%;border-radius:34px;overflow:hidden;background:linear-gradient(170deg,var(--s1),var(--s2));color:var(--sc);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12cqw 9cqw;gap:3.5cqw}
+/* Экран: оқ фон, ёрқин урғулар (--w асосий сўз, --n исмлар), таклифнома саҳифаси билан бир хил */
+.screen{position:relative;height:100%;border-radius:34px;overflow:hidden;background:#fff;color:var(--ink);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12cqw 8cqw;gap:3cqw}
 .phone.mini .screen{border-radius:24px}
-.screen svg.s-icon{width:18cqw;height:auto}
-.screen .s-title{font:700 13cqw/1 var(--serif);letter-spacing:-.01em}
-.screen .s-names{font:700 9.5cqw/1.05 var(--serif);letter-spacing:-.01em}
-.screen .s-sign{position:absolute;left:0;right:0;bottom:5cqw;font:500 3cqw/1 var(--sans);letter-spacing:.14em;opacity:.45}
-.screen .s-line{font:500 4.4cqw/1.4 var(--sans);opacity:.85;max-width:80%}
-.screen .s-rule{width:18cqw;height:1px;background:currentColor;opacity:.4}
-.screen .s-date{font:600 5.2cqw/1 var(--sans);letter-spacing:.04em}
+.screen svg.s-icon{width:18cqw;height:auto;color:var(--w)}
+.screen .s-art{width:68cqw;height:auto}
+.screen .s-corner{position:absolute;top:0;width:30cqw;height:auto}
+.screen .s-corner.l{left:0}
+.screen .s-corner.r{right:0;transform:scaleX(-1)}
+.screen .s-title{font:400 14cqw/1.1 var(--script);color:var(--w)}
+.screen .s-names{font:400 9cqw/1.25 var(--script);color:var(--n)}
+.screen .s-sign{position:absolute;left:0;right:0;bottom:5cqw;font:500 3cqw/1 var(--sans);letter-spacing:.14em;opacity:.4}
+.screen .s-line{font:500 4.2cqw/1.4 var(--sans);color:var(--muted);max-width:84%}
+.screen .s-rule{width:18cqw;height:1.5px;background:var(--w);opacity:.35}
+.screen .s-date{font:700 5.2cqw/1 var(--sans);color:var(--n);letter-spacing:.02em}
 .screen .s-cd{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5cqw;width:100%;margin-top:1cqw}
-.screen .s-cd div{border:1px solid color-mix(in srgb,currentColor 30%,transparent);border-radius:3cqw;padding:2.4cqw 0;display:flex;flex-direction:column;gap:1cqw}
-.screen .s-cd b{font:700 6.4cqw/1 var(--serif);font-variant-numeric:tabular-nums}
-.screen .s-cd span{font:500 2.8cqw/1 var(--sans);opacity:.7}
-.screen .s-venue{font:500 4cqw/1.3 var(--sans);opacity:.85;margin-top:2cqw}
-.screen .s-map{font:600 3.8cqw/1 var(--sans);padding:3cqw 6cqw;border-radius:99px;background:var(--sc);color:var(--s1)}
+.screen .s-cd div{background:var(--lilac);border-radius:3cqw;padding:2.4cqw 0;display:flex;flex-direction:column;gap:1cqw}
+.screen .s-cd b{font:700 6cqw/1 var(--sans);color:var(--n);font-variant-numeric:tabular-nums}
+.screen .s-cd span{font:500 2.8cqw/1 var(--sans);color:var(--muted)}
+.screen .s-venue{font:500 4cqw/1.3 var(--sans);color:var(--muted);margin-top:2cqw}
+.screen .s-map{font:600 3.8cqw/1 var(--sans);padding:3cqw 6cqw;border-radius:99px;background:var(--n);color:#fff}
 
 /* sections */
 .section{padding-block:72px}
@@ -339,10 +345,11 @@ const ICONS = {
   tilak:'<path d="M8 14h32v22H8Z"/><path d="M8 14l16 12 16-12"/>'
 };
 const TEMPLATES = [
-  {id:"saroy",   cat:"toy",      kind:"wedding",  s1:"#FFF8EE", s2:"#F1DAB4", sc:"#7E5A1A", names:"Азиз & Мадина", date:"2026-12-12T18:00:00+05:00", live:true},
-  {id:"gul",     cat:"toy",      kind:"wedding",  s1:"#FFF2F6", s2:"#F9CFDF", sc:"#9C2C56", names:"Жасур & Нигора", date:"2026-12-19T18:00:00+05:00"},
-  {id:"sham",    cat:"tugilgan", kind:"birthday", s1:"#2B2119", s2:"#4A3828", sc:"#EED092", names:"Камола", date:"2026-12-20T19:00:00+05:00"},
-  {id:"tilak",   cat:"tabrik",   kind:"greeting", s1:"#F7F2FF", s2:"#DDCBFF", sc:"#4E2AA6", names:"Азиза"}
+  // w — асосий сўз ранги, n — исмлар ранги; art — тайёр расмлар папкаси (бўлса, икон ўрнига кўрсатилади)
+  {id:"saroy",   cat:"toy",      kind:"wedding",  w:"#E8458B", n:"#6D28D9", art:"assets/saroy/", names:"Азиз & Мадина", date:"2026-12-12T18:00:00+05:00", live:true},
+  {id:"gul",     cat:"toy",      kind:"wedding",  w:"#E8458B", n:"#BE185D", names:"Жасур & Нигора", date:"2026-12-19T18:00:00+05:00"},
+  {id:"sham",    cat:"tugilgan", kind:"birthday", w:"#7C3AED", n:"#E8458B", names:"Камола", date:"2026-12-20T19:00:00+05:00"},
+  {id:"tilak",   cat:"tabrik",   kind:"greeting", w:"#6D28D9", n:"#E8458B", names:"Азиза"}
 ];
 
 /* ---------- Матнлар ---------- */
@@ -432,7 +439,10 @@ function fmtDate(iso){
 /* Телефон ичидаги таклифнома */
 function phone(t, mini){
   const p = UI[lang].ph;
-  const head = `${svg(ICONS[t.id],"s-icon",2)}<span class="s-title">${esc(fword(t))}</span>`;
+  const pic = t.art
+    ? `<img class="s-corner l" src="${t.art}corner.webp" alt="" loading="lazy"><img class="s-corner r" src="${t.art}corner.webp" alt="" loading="lazy"><img class="s-art" src="${t.art}palace.webp" alt="" loading="lazy">`
+    : svg(ICONS[t.id],"s-icon",2);
+  const head = `${pic}<span class="s-title">${esc(fword(t))}</span>`;
   let body;
   if (t.kind === "greeting"){
     body = `${head}
@@ -450,7 +460,7 @@ function phone(t, mini){
       <div class="s-cd" data-cd="${t.date}">${p.units.map(u=>`<div><b>0</b><span>${esc(u)}</span></div>`).join("")}</div>
       ${mini ? "" : `<span class="s-venue">${esc(venue)}</span><span class="s-map">${esc(p.map)}</span>`}`;
   }
-  return `<div class="phone${mini?" mini":""}"${mini?' aria-hidden="true"':""}><div class="screen" style="--s1:${t.s1};--s2:${t.s2};--sc:${t.sc}">${body}<span class="s-sign">${tname(t.id)}</span></div></div>`;
+  return `<div class="phone${mini?" mini":""}"${mini?' aria-hidden="true"':""}><div class="screen" style="--w:${t.w};--n:${t.n}">${body}<span class="s-sign">${tname(t.id)}</span></div></div>`;
 }
 
 function tickCountdowns(){
