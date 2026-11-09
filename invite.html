@@ -14,15 +14,17 @@
 <meta property="og:image" content="https://shirin.day/assets/saroy/preview.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<link rel="preload" href="assets/fonts/ShirinScript-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
 <style>
+@font-face{font-family:"Shirin Script";src:url("assets/fonts/ShirinScript-Regular.woff2") format("woff2");font-display:swap} /* Great Vibes + ўзбек ва қозоқ ҳарфлари, OFL */
 /* Shirin: таклифнома саҳифаси. Оқ фон, ёрқин бинафша ва пушти урғулар.
-   Шрифтлар: Bad Script — асосий сўз ва исмлар (ўзбек ва қозоқ ҳарфларининг ҳаммаси бор),
+   Шрифтлар: Shirin Script (Great Vibes + ўзбек ва қозоқ ҳарфлари, assets/fonts) — асосий сўз ва исмлар,
    Cormorant — тантанали сарлавҳалар, Inter — оддий матн. */
 :root{
-  --script:"Bad Script","Segoe Script",cursive;
+  --script:"Shirin Script","Segoe Script",cursive;
   --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --paper:#FFFFFF; --ink:#1E1029; --muted:#6E6078; --line:#EEE6F2; --lilac:#F5F0FC; --pink-soft:#FDECF4;
@@ -43,14 +45,14 @@ button{font:inherit;color:inherit}
 .btn:active{transform:scale(.97)}
 .btn svg{width:22px;height:22px;flex:none}
 .label{margin:0 0 18px;font:700 13px/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--accent2)}
-.word{margin:0;font:400 clamp(54px,15vw,72px)/1.05 var(--script);color:var(--word)}
+.word{margin:0;font:400 clamp(60px,17vw,84px)/1.1 var(--script);color:var(--word)}
 
 /* ---------- Конверт ---------- */
 .cover{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(14px,3.5vh,30px);
   padding:max(24px,env(safe-area-inset-top)) 20px max(24px,env(safe-area-inset-bottom));background:var(--paper);
   transition:opacity .6s ease .7s,visibility 0s linear 1.3s}
 .cover.open{opacity:0;visibility:hidden}
-.cover .pair{margin:-6px 0 0;font:400 clamp(26px,7.5vw,34px)/1.2 var(--script);color:var(--names)}
+.cover .pair{margin:-6px 0 0;font:400 clamp(34px,9.5vw,44px)/1.25 var(--script);color:var(--names)}
 .env{position:relative;width:min(86vw,400px);cursor:pointer;transition:transform .8s cubic-bezier(.55,0,.8,.2) .35s,opacity .5s ease .6s}
 .env .bob{position:relative;animation:bob 3.4s ease-in-out infinite}
 .env .seal{position:absolute;left:50%;top:72%;width:27%;transform:translate(-50%,-50%);transition:transform .4s ease,opacity .4s ease}
@@ -69,8 +71,8 @@ main{position:relative;max-width:560px;margin:0 auto;padding-inline:max(24px,env
 
 .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding-block:clamp(72px,12vh,120px) 40px}
 .hero .art{width:min(80vw,370px)}
-.names{margin:0;display:flex;flex-direction:column;align-items:center;gap:2px;font:400 clamp(40px,11.5vw,52px)/1.3 var(--script);color:var(--names);text-wrap:balance}
-.names .amp{font:400 clamp(28px,8vw,34px)/1.4 var(--script);color:var(--word)}
+.names{margin:0;display:flex;flex-direction:column;align-items:center;gap:2px;font:400 clamp(46px,13vw,60px)/1.3 var(--script);color:var(--names);text-wrap:balance}
+.names .amp{font:400 clamp(32px,9vw,40px)/1.4 var(--script);color:var(--word)}
 .hero .divider{width:min(70vw,300px);margin-top:6px}
 
 /* Очилиш анимацияси: элементлар навбат билан чиқади */
@@ -89,7 +91,7 @@ body.go .hero > *{opacity:1;transform:none;transition:opacity .9s ease,transform
   background:linear-gradient(170deg,var(--lilac),var(--pink-soft));color:var(--accent);font-size:16px;font-weight:500}
 .photo .ph svg{width:46px;height:46px}
 
-.guest{margin:0 0 12px;font:400 clamp(32px,9vw,40px)/1.2 var(--script);color:var(--word)}
+.guest{margin:0 0 12px;font:400 clamp(38px,11vw,50px)/1.25 var(--script);color:var(--word)}
 .lead{margin:0 auto;max-width:30ch;font-size:19px;line-height:1.6;text-wrap:balance}
 
 .date{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:32px}
