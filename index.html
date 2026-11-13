@@ -86,10 +86,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12cqw 8cqw;gap:3cqw}
 .phone.mini .screen{border-radius:24px}
 .screen svg.s-icon{width:18cqw;height:auto;color:var(--w)}
-.screen .s-art{width:68cqw;height:auto}
-.screen .s-corner{position:absolute;top:0;width:30cqw;height:auto}
-.screen .s-corner.l{left:0}
-.screen .s-corner.r{right:0;transform:scaleX(-1)}
+/* Расмли шаблон (Gul): тепада гул гирляндаси, исмлар остида гулдаста */
+.screen.has-art{padding-top:44cqw}
+.screen .s-garland{position:absolute;top:0;left:0;width:100%;height:auto}
+.screen .s-bouquet{width:72cqw;height:auto;margin-block:-1cqw}
 .screen .s-title{font:400 11cqw/1.25 var(--script);color:var(--w)}
 .screen .s-names{font:400 8cqw/1.35 var(--script);color:var(--n)}
 .screen .s-sign{position:absolute;left:0;right:0;bottom:5cqw;font:500 3cqw/1 var(--sans);letter-spacing:.14em;opacity:.4}
@@ -341,15 +341,15 @@ const WA_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stro
 
 /* ---------- Шаблонлар ---------- */
 const ICONS = {
-  saroy:'<path d="M8 40V22h6v4h4V16l6-8 6 8v10h4v-4h6v18Z"/><path d="M21 40v-6a3 3 0 0 1 6 0v6"/>',
+  saroy:'<circle cx="18" cy="28" r="10"/><circle cx="30" cy="28" r="10"/><path d="M24 8l3 4-3 4-3-4Z"/>',
   gul:'<path d="M24 41V24"/><path d="M24 24c-6 0-10-5-10-12 4 2 7 2 10-2 3 4 6 4 10 2 0 7-4 12-10 12Z"/><path d="M24 35c-4-4-9-4-12-2M24 33c4-4 9-4 12-2"/>',
   sham:'<path d="M19 41V20h10v21Z"/><path d="M24 20v-3"/><path d="M24 16c-2-2-2-5 0-8 2 3 2 6 0 8Z"/><path d="M14 41h20"/>',
   tilak:'<path d="M8 14h32v22H8Z"/><path d="M8 14l16 12 16-12"/>'
 };
 const TEMPLATES = [
   // w — асосий сўз ранги, n — исмлар ранги; art — тайёр расмлар папкаси (бўлса, икон ўрнига кўрсатилади)
-  {id:"saroy",   cat:"toy",      kind:"wedding",  w:"#E8458B", n:"#6D28D9", art:"assets/saroy/", names:"Азиз & Мадина", date:"2026-12-12T18:00:00+05:00", live:true},
-  {id:"gul",     cat:"toy",      kind:"wedding",  w:"#E8458B", n:"#BE185D", names:"Жасур & Нигора", date:"2026-12-19T18:00:00+05:00"},
+  {id:"gul",     cat:"toy",      kind:"wedding",  w:"#C64B78", n:"#8E2C55", art:"assets/gul/", names:"Азиз & Мадина", date:"2026-12-12T18:00:00+05:00", live:true},
+  {id:"saroy",   cat:"toy",      kind:"wedding",  w:"#E8458B", n:"#6D28D9", names:"Жасур & Нигора", date:"2026-12-19T18:00:00+05:00"}, // янги дизайн тайёрланмоқда
   {id:"sham",    cat:"tugilgan", kind:"birthday", w:"#7C3AED", n:"#E8458B", names:"Камола", date:"2026-12-20T19:00:00+05:00"},
   {id:"tilak",   cat:"tabrik",   kind:"greeting", w:"#6D28D9", n:"#E8458B", names:"Азиза"}
 ];
@@ -380,7 +380,7 @@ const UI = {
   word:{invite:"Таклифнома", greet:"Табрик"},
   occ:{toy:"Тўй",tugilgan:"Туғилган кун",tabrik:"Туғилган кун"},
   cats:{toy:"Тўй таклифномаси",tugilgan:"Туғилган кун таклифномаси",tabrik:"Туғилган кун табриги"},
-  desc:{saroy:"Эртак саройи, оқ ва олтин ранглар. Тантанали тўй учун.",gul:"Гулли боғ, пушти ранглар. Нафис ва енгил.",sham:"Шамлар ва олтин. Туғилган кун ва юбилей учун.",tilak:"Табрикнома-мактуб. Яқинларингизни табрикланг."},
+  desc:{saroy:"Янги дизайн тайёрланмоқда.",gul:"Пионлар ва атиргуллар, пушти ва оқ ранглар. Нафис ва ёрқин.",sham:"Шамлар ва олтин. Туғилган кун ва юбилей учун.",tilak:"Табрикнома-мактуб. Яқинларингизни табрикланг."},
   ph:{wedding:"Никоҳ тўйимизга таклиф этамиз", birthday:"Туғилган кунимга таклиф этаман", age:"25 ёшда", greetTitle:"Туғилган кунингиз муборак!", greetText:"Бахт, соғлик ва омад тилаймиз", units:["кун","соат","дақиқа","сония"], venueW:"Тўйхона, Шымкент", venueB:"Ресторан, Шымкент", map:"Харита"}
  },
  "kk":{
@@ -407,7 +407,7 @@ const UI = {
   word:{invite:"Шақыру", greet:"Құттықтау"},
   occ:{toy:"Той",tugilgan:"Туған күн",tabrik:"Туған күн"},
   cats:{toy:"Той шақыруы",tugilgan:"Туған күнге шақыру",tabrik:"Туған күнмен құттықтау"},
-  desc:{saroy:"Ертегі сарайы, ақ пен алтын түстер. Салтанатты той үшін.",gul:"Гүлді бақ, қызғылт түстер. Нәзік әрі жеңіл.",sham:"Шамдар мен алтын. Туған күн мен мерейтойға.",tilak:"Құттықтау хат. Жақындарыңызды құттықтаңыз."},
+  desc:{saroy:"Жаңа дизайн дайындалуда.",gul:"Пиондар мен раушандар, қызғылт пен ақ түстер. Нәзік әрі жарқын.",sham:"Шамдар мен алтын. Туған күн мен мерейтойға.",tilak:"Құттықтау хат. Жақындарыңызды құттықтаңыз."},
   ph:{wedding:"Үйлену тойымызға шақырамыз", birthday:"Туған күніме шақырамын", age:"25 жаста", greetTitle:"Туған күніңіз құтты болсын!", greetText:"Бақыт, денсаулық және сәттілік тілейміз", units:["күн","сағат","минут","секунд"], venueW:"Тойхана, Шымкент", venueB:"Мейрамхана, Шымкент", map:"Карта"}
  }
 };
@@ -442,7 +442,7 @@ function fmtDate(iso){
 function phone(t, mini){
   const p = UI[lang].ph;
   const pic = t.art
-    ? `<img class="s-corner l" src="${t.art}corner.webp" alt="" loading="lazy"><img class="s-corner r" src="${t.art}corner.webp" alt="" loading="lazy"><img class="s-art" src="${t.art}palace.webp" alt="" loading="lazy">`
+    ? `<img class="s-garland" src="${t.art}top.webp" alt="" loading="lazy">`
     : svg(ICONS[t.id],"s-icon",2);
   const head = `${pic}<span class="s-title">${esc(fword(t))}</span>`;
   let body;
@@ -457,12 +457,13 @@ function phone(t, mini){
     const age = t.kind === "birthday" ? `<span class="s-line">${esc(p.age)}</span>` : "";
     body = `${head}
       <span class="s-names">${esc(t.names)}</span>${age}
-      <span class="s-line">${esc(line)}</span><span class="s-rule"></span>
+      ${t.art ? `<img class="s-bouquet" src="${t.art}bottom.webp" alt="" loading="lazy">` : ""}
+      <span class="s-line">${esc(line)}</span>${t.art ? "" : `<span class="s-rule"></span>`}
       <span class="s-date">${fmtDate(t.date)}</span>
       <div class="s-cd" data-cd="${t.date}">${p.units.map(u=>`<div><b>0</b><span>${esc(u)}</span></div>`).join("")}</div>
       ${mini ? "" : `<span class="s-venue">${esc(venue)}</span><span class="s-map">${esc(p.map)}</span>`}`;
   }
-  return `<div class="phone${mini?" mini":""}"${mini?' aria-hidden="true"':""}><div class="screen" style="--w:${t.w};--n:${t.n}">${body}<span class="s-sign">${tname(t.id)}</span></div></div>`;
+  return `<div class="phone${mini?" mini":""}"${mini?' aria-hidden="true"':""}><div class="screen${t.art ? " has-art" : ""}" style="--w:${t.w};--n:${t.n}">${body}<span class="s-sign">${tname(t.id)}</span></div></div>`;
 }
 
 function tickCountdowns(){

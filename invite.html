@@ -11,162 +11,181 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Таклифнома">
 <meta property="og:description" content="Сизни тўйимизга таклиф этамиз">
-<meta property="og:image" content="https://shirin.day/assets/saroy/preview.jpg">
+<meta property="og:image" content="https://shirin.day/assets/gul/preview.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <link rel="preload" href="assets/fonts/ShirinNueva-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap">
 <style>
 @font-face{font-family:"Shirin Nueva";src:url("assets/fonts/ShirinNueva-Regular.woff2") format("woff2");font-display:swap} /* Miama Nueva асосида, OFL */
-/* Shirin: таклифнома саҳифаси. Оқ фон, ёрқин бинафша ва пушти урғулар.
-   Шрифтлар: Shirin Nueva (Miama Nueva асосида, assets/fonts) — асосий сўз ва исмлар,
-   Cormorant — тантанали сарлавҳалар, Inter — оддий матн. */
+/* Shirin: таклифнома саҳифаси, «Gul» мавзуси — пионлар боғи.
+   Оқ фон, акварел гуллар, атиргул ва резавор ранглари, бироз шалфей яшили.
+   Шрифтлар: Shirin Nueva — асосий сўз ва исмлар; Cormorant Garamond — матн; Inter — майда тугма ва ёзувлар. */
 :root{
   --script:"Shirin Nueva","Segoe Script",cursive;
   --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --paper:#FFFFFF; --ink:#1E1029; --muted:#6E6078; --line:#EEE6F2; --lilac:#F5F0FC; --pink-soft:#FDECF4;
   /* мавзу ранглари: JS шаблонга қараб алмаштиради */
-  --word:#E8458B; --names:#6D28D9; --accent:#6D28D9; --accent2:#E8458B;
+  --paper:#FFFFFF; --outside:#FBF1F5; --blush:#FFF5F7; --ink:#3B2433; --muted:#7D6773; --line:#F0DDE4;
+  --rose:#C64B78; --berry:#8E2C55; --btn:#B23A66; --sage:#7C9A82;
+  --pad:24px;
   color-scheme:light;
 }
 *{box-sizing:border-box}
 html,body{margin:0}
-body{min-height:100svh;background:var(--paper);color:var(--ink);font:400 18px/1.55 var(--sans);-webkit-font-smoothing:antialiased;text-align:center;overflow-x:hidden}
+body{min-height:100svh;background:var(--outside);color:var(--ink);font:500 21px/1.55 var(--serif);-webkit-font-smoothing:antialiased;text-align:center;overflow-x:hidden}
 body.locked{overflow:hidden}
 [hidden]{display:none!important}
 img{display:block;max-width:100%;height:auto}
 button{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--accent2);outline-offset:3px;border-radius:12px}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px;border-radius:12px}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 30px;border:0;border-radius:999px;background:var(--accent);color:#fff;font:600 18px/1 var(--sans);text-decoration:none;cursor:pointer;transition:transform .15s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 30px;border:0;border-radius:999px;background:var(--btn);color:#fff;font:600 17px/1 var(--sans);letter-spacing:.01em;text-decoration:none;cursor:pointer;transition:transform .15s}
 .btn:active{transform:scale(.97)}
 .btn svg{width:22px;height:22px;flex:none}
-.label{margin:0 0 18px;font:700 13px/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--accent2)}
-.word{margin:0;font:400 clamp(44px,12.5vw,62px)/1.2 var(--script);color:var(--word)}
+.label{margin:0 0 16px;font:600 13px/1.3 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--rose)}
+.word{margin:0;font:400 clamp(46px,13vw,64px)/1.25 var(--script);color:var(--rose)}
+.script{font-family:var(--script);font-weight:400}
+.sprig{width:min(72%,320px);margin:22px auto 0}
 
 /* ---------- Конверт ---------- */
-.cover{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(14px,3.5vh,30px);
+.cover{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(10px,2.6vh,22px);overflow:hidden;
   padding:max(24px,env(safe-area-inset-top)) 20px max(24px,env(safe-area-inset-bottom));background:var(--paper);
   transition:opacity .6s ease .7s,visibility 0s linear 1.3s}
 .cover.open{opacity:0;visibility:hidden}
-.cover .pair{margin:-6px 0 0;font:400 clamp(26px,7.2vw,34px)/1.3 var(--script);color:var(--names)}
-.env{position:relative;width:min(86vw,400px);cursor:pointer;transition:transform .8s cubic-bezier(.55,0,.8,.2) .35s,opacity .5s ease .6s}
+.cover .deco{position:absolute;width:min(46vw,250px);pointer-events:none;z-index:0}
+.cover .deco.bl{left:0;bottom:0}
+.cover .deco.tr{right:0;top:0;transform:rotate(180deg)}
+.cover > *:not(.deco){position:relative;z-index:1}
+.cover .pair{margin:-4px 0 4px;font:400 clamp(28px,8vw,36px)/1.3 var(--script);color:var(--berry)}
+.env{position:relative;width:min(84vw,380px);cursor:pointer;transition:transform .8s cubic-bezier(.55,0,.8,.2) .35s,opacity .5s ease .6s}
 .env .bob{position:relative;animation:bob 3.4s ease-in-out infinite}
-.env .seal{position:absolute;left:50%;top:72%;width:27%;transform:translate(-50%,-50%);transition:transform .4s ease,opacity .4s ease}
+.env .seal{position:absolute;left:50%;top:64%;width:25%;transform:translate(-50%,-50%);transition:transform .4s ease,opacity .4s ease}
 @keyframes bob{50%{transform:translateY(-9px) rotate(-.6deg)}}
 .cover.open .seal{transform:translate(-50%,-50%) scale(1.3);opacity:0}
 .cover.open .env{transform:translateY(55vh);opacity:0}
-.cover.open .word,.cover.open .pair,.cover.open .btn{opacity:0;transition:opacity .3s}
+.cover.open .word,.cover.open .pair,.cover.open .btn,.cover.open .deco{opacity:0;transition:opacity .4s}
 
 /* ---------- Асосий қисм ---------- */
-main{position:relative;max-width:560px;margin:0 auto;padding-inline:max(24px,env(safe-area-inset-left)) max(24px,env(safe-area-inset-right))}
-.corner{position:absolute;width:clamp(96px,30vw,150px);pointer-events:none}
-.corner.tl{top:0;left:0}
-.corner.tr{top:0;right:0;transform:scaleX(-1)}
-.corner.bl{bottom:0;left:0;transform:scaleY(-1)}
-.corner.br{bottom:0;right:0;transform:scale(-1)}
+main{position:relative;max-width:520px;min-height:100svh;margin:0 auto;padding-inline:var(--pad);background:var(--paper)}
+.bleed{margin-inline:calc(-1 * var(--pad));width:calc(100% + 2 * var(--pad));max-width:none}
 
-.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding-block:clamp(72px,12vh,120px) 40px}
-.hero .art{width:min(80vw,370px)}
-.names{margin:0;display:flex;flex-direction:column;align-items:center;gap:2px;font:400 clamp(34px,9.5vw,46px)/1.35 var(--script);color:var(--names);text-wrap:balance}
-.names .amp{font:400 clamp(24px,6.5vw,30px)/1.4 var(--script);color:var(--word)}
-.hero .divider{width:min(70vw,300px);margin-top:6px}
+.hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;padding-bottom:40px}
+.hero .garland{margin-bottom:auto}
+.hero .center{display:flex;flex-direction:column;align-items:center;gap:12px;margin-block:8px auto;padding-top:4px}
+.names{margin:0;display:flex;flex-direction:column;align-items:center;font:400 clamp(40px,11vw,54px)/1.38 var(--script);color:var(--berry);text-wrap:balance}
+.names .amp{font:400 clamp(26px,7vw,32px)/1.3 var(--script);color:var(--rose)}
+.hero .bouquet{width:min(92%,420px);margin-top:6px}
+.hero .dateline{margin-top:10px;font:600 24px/1 var(--serif);letter-spacing:.14em;color:var(--berry);font-variant-numeric:lining-nums}
 
 /* Очилиш анимацияси: элементлар навбат билан чиқади */
-.hero > *{opacity:0;transform:translateY(16px)}
-body.go .hero > *{opacity:1;transform:none;transition:opacity .9s ease,transform .9s ease;transition-delay:calc(.55s + var(--i,0) * .16s)}
+.hero .garland,.hero .center > *{opacity:0;transform:translateY(14px)}
+.hero .garland{transform:translateY(-18px)}
+body.go .hero .garland,body.go .hero .center > *{opacity:1;transform:none;transition:opacity 1s ease,transform 1s ease;transition-delay:calc(.5s + var(--i,0) * .15s)}
 
 .block{padding-block:44px;opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease}
 .block.in{opacity:1;transform:none}
+.band{background:var(--blush)}
 
-/* Сурат: арка шаклида, оқ ҳошия ва ингичка чизиқ */
-.photo{position:relative;margin:0 auto;width:min(80vw,340px);aspect-ratio:4/5;border-radius:999px 999px 28px 28px;overflow:hidden;
-  border:6px solid #fff;outline:1.5px solid color-mix(in srgb,var(--accent) 35%,transparent);outline-offset:0;transform:scale(.96);transition:transform 1.2s ease}
+.guest{margin:0 0 12px;font:400 clamp(30px,8.4vw,40px)/1.42 var(--script);color:var(--rose);text-wrap:balance}
+.lead{margin:0 auto;max-width:28ch;font-size:23px;line-height:1.5;text-wrap:balance}
+
+/* Сурат: арка, бурчакда гул */
+.photo-wrap{position:relative;width:min(80vw,330px);margin:8px auto 20px}
+.photo{position:relative;margin:0;aspect-ratio:4/5;border-radius:999px 999px 26px 26px;overflow:hidden;border:6px solid #fff;outline:1.5px solid var(--line);transform:scale(.96);transition:transform 1.2s ease}
 .block.in .photo{transform:none}
 .photo img{width:100%;height:100%;object-fit:cover}
-.photo .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;
-  background:linear-gradient(170deg,var(--lilac),var(--pink-soft));color:var(--accent);font-size:16px;font-weight:500}
+.photo .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;background:var(--blush);color:var(--rose);font:500 16px/1.4 var(--sans)}
 .photo .ph svg{width:46px;height:46px}
+.photo-wrap .flowers{position:absolute;left:-16%;bottom:-12%;width:58%;pointer-events:none}
 
-.guest{margin:0 0 12px;font:400 clamp(28px,8vw,38px)/1.3 var(--script);color:var(--word)}
-.lead{margin:0 auto;max-width:30ch;font-size:19px;line-height:1.6;text-wrap:balance}
-
-.date{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:32px}
-.date .wd{font:700 14px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--accent2)}
-.date .row{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;width:min(100%,330px)}
-.date .row span{padding-block:12px;border-block:1.5px solid var(--line);font:600 14px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase}
-.date .row b{font:700 72px/.9 var(--serif);color:var(--accent);font-variant-numeric:lining-nums}
-.date .time{font:600 21px/1.2 var(--sans)}
+/* Тақвим: тўй куни юракча билан */
+.cal{width:min(100%,360px);margin:0 auto}
+.cal h3{margin:0 0 14px;font:600 30px/1.1 var(--serif);color:var(--berry)}
+.cal .grid{display:grid;grid-template-columns:repeat(7,1fr);row-gap:6px}
+.cal .wd{font:600 12px/2 var(--sans);letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.cal .d{position:relative;display:grid;place-items:center;height:42px;font:600 19px/1 var(--serif);font-variant-numeric:lining-nums;color:var(--ink)}
+.cal .d.on{color:#fff;font-weight:700}
+.cal .d.on svg{position:absolute;inset:50% auto auto 50%;width:46px;height:46px;transform:translate(-50%,-52%);color:var(--rose)}
+.cal .d.on span{position:relative}
+.block.in .cal .d.on svg{animation:beat 1.6s ease-in-out .6s 2}
+@keyframes beat{30%{transform:translate(-50%,-52%) scale(1.15)}60%{transform:translate(-50%,-52%) scale(.97)}}
+.cal .when{margin-top:16px;font:600 22px/1.3 var(--serif)}
 
 .cd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;width:min(100%,380px);margin:0 auto}
-.cd div{display:flex;flex-direction:column;gap:6px;padding:16px 0 12px;border-radius:18px;background:var(--lilac)}
-.cd b{font:700 32px/1 var(--sans);color:var(--accent);font-variant-numeric:tabular-nums lining-nums;letter-spacing:-.02em}
-.cd span{font-size:14px;color:var(--muted)}
+.cd div{display:flex;flex-direction:column;gap:6px;padding:16px 0 12px;border-radius:18px;background:var(--blush)}
+.band .cd div{background:#fff}
+.cd b{font:700 36px/1 var(--serif);color:var(--berry);font-variant-numeric:tabular-nums lining-nums}
+.cd span{font:500 13px/1 var(--sans);color:var(--muted)}
 
-/* Тўй дастури: вертикал чизиқ ва нуқталар */
-.prog{list-style:none;margin:0 auto;padding:0;width:min(100%,360px);text-align:left;position:relative}
-.prog::before{content:"";position:absolute;left:75px;top:16px;bottom:16px;width:2px;border-radius:2px;background:linear-gradient(var(--accent2),var(--accent));opacity:.3}
-.prog li{display:grid;grid-template-columns:62px 28px minmax(0,1fr);align-items:start;padding:10px 0;opacity:0;transform:translateY(12px)}
+/* Тўй дастури */
+.prog{list-style:none;margin:0 auto;padding:0;width:min(100%,370px);text-align:left;position:relative}
+.prog::before{content:"";position:absolute;left:88px;top:24px;bottom:24px;width:1.5px;background:var(--line)}
+.prog li{display:grid;grid-template-columns:60px 56px minmax(0,1fr);align-items:center;padding:7px 0;opacity:0;transform:translateY(12px)}
 .block.in .prog li{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease;transition-delay:calc(.2s + var(--k) * .15s)}
-.prog time{font:700 18px/1.45 var(--sans);color:var(--accent2);font-variant-numeric:tabular-nums}
-.prog .dot{width:14px;height:14px;margin:6px auto 0;border-radius:50%;background:#fff;border:3px solid var(--accent)}
-.prog span{font-size:18px;line-height:1.45}
+.prog time{font:600 17px/1 var(--sans);color:var(--rose);font-variant-numeric:tabular-nums}
+.prog .ic{position:relative;width:44px;height:44px;margin:0 auto;border-radius:50%;background:var(--blush);border:1.5px solid var(--line);display:grid;place-items:center;color:var(--rose)}
+.band .prog .ic{background:#fff}
+.prog .ic svg{width:22px;height:22px}
+.prog span{font:600 20px/1.35 var(--serif)}
 
-.venue{margin:0;font:700 clamp(30px,8.5vw,36px)/1.15 var(--serif);text-wrap:balance}
-.addr{margin:8px auto 24px;max-width:32ch;color:var(--muted)}
-.hosts{margin:0;font:700 clamp(30px,8.5vw,36px)/1.15 var(--serif);text-wrap:balance}
+.venue{margin:0;font:700 clamp(28px,8vw,34px)/1.15 var(--serif);color:var(--berry);text-wrap:balance}
+.addr{margin:8px auto 24px;max-width:30ch;color:var(--muted);text-wrap:balance}
 
-.foot{position:relative;min-height:200px;display:flex;flex-direction:column;align-items:center;gap:14px;padding:32px 0 calc(150px + env(safe-area-inset-bottom,0px))}
-.foot .corner{bottom:env(safe-area-inset-bottom,0px)}
+.closing .thanks{margin:0 0 40px;font:400 clamp(30px,8.5vw,40px)/1.5 var(--script);color:var(--rose);text-wrap:balance}
+.hosts{margin:0;font:700 clamp(28px,8vw,34px)/1.15 var(--serif);color:var(--berry);text-wrap:balance}
+.closing .bouquet{width:min(92%,420px);margin:28px auto 0}
+
+.foot{display:flex;flex-direction:column;align-items:center;gap:10px;padding:26px 0 calc(28px + env(safe-area-inset-bottom,0px))}
 /* Шаблон номи: майда ва ярим шаффоф, имзо каби */
-.sign{font-size:12px;letter-spacing:.16em;opacity:.45}
+.sign{font:500 12px/1 var(--sans);letter-spacing:.16em;opacity:.45}
 .sign a{color:inherit;text-decoration:none}
-.report{border:0;background:none;padding:10px;font-size:14px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.report{border:0;background:none;padding:10px;font:500 14px/1 var(--sans);color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 
-/* ---------- Гул барглари ---------- */
+/* ---------- Гул барглари (акварел расмлар) ---------- */
 .petals{position:fixed;inset:0;z-index:15;pointer-events:none;overflow:hidden}
-.petals i{position:absolute;top:0;width:16px;height:12px;border-radius:12px 2px 12px 2px;background:var(--c);opacity:.75;
-  animation:fall var(--d) linear var(--delay) infinite;will-change:transform}
+.petals img{position:absolute;top:0;width:var(--w);height:auto;opacity:.92;animation:fall var(--d) linear var(--delay) infinite;will-change:transform}
 @keyframes fall{
-  0%{transform:translate3d(0,-30px,0) rotate(0) scale(var(--s))}
-  50%{transform:translate3d(var(--x),50vh,0) rotate(200deg) scale(var(--s))}
-  100%{transform:translate3d(calc(var(--x) * -.6),105vh,0) rotate(400deg) scale(var(--s))}
+  0%{transform:translate3d(0,-60px,0) rotate(0deg)}
+  25%{transform:translate3d(var(--x),25vh,0) rotate(90deg)}
+  50%{transform:translate3d(calc(var(--x) * -.5),50vh,0) rotate(180deg)}
+  75%{transform:translate3d(var(--x),75vh,0) rotate(270deg)}
+  100%{transform:translate3d(0,108vh,0) rotate(360deg)}
 }
 
 /* ---------- Мусиқа тугмаси ---------- */
 .sound{position:fixed;z-index:20;top:max(14px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right));width:48px;height:48px;border-radius:50%;
-  border:0;background:var(--accent);color:#fff;display:grid;place-items:center;cursor:pointer}
+  border:0;background:var(--btn);color:#fff;display:grid;place-items:center;cursor:pointer}
 .sound svg{width:22px;height:22px}
 .sound .off{display:none}
-.sound[aria-pressed="false"]{background:#fff;color:var(--accent);box-shadow:inset 0 0 0 1.5px var(--line)}
+.sound[aria-pressed="false"]{background:#fff;color:var(--btn);box-shadow:inset 0 0 0 1.5px var(--line)}
 .sound[aria-pressed="false"] .on{display:none}
 .sound[aria-pressed="false"] .off{display:block}
 
 /* ---------- Шикоят ойнаси ---------- */
-dialog{width:min(100% - 32px,420px);border:0;border-radius:24px;padding:24px;background:#fff;color:var(--ink);text-align:left}
-dialog::backdrop{background:rgba(30,16,41,.5)}
+dialog{width:min(100% - 32px,420px);border:0;border-radius:24px;padding:24px;background:#fff;color:var(--ink);text-align:left;font:400 17px/1.45 var(--sans)}
+dialog::backdrop{background:rgba(59,36,51,.5)}
 dialog h2{margin:0 0 14px;font:700 30px/1.1 var(--serif)}
 dialog fieldset{border:0;margin:0 0 14px;padding:0;display:flex;flex-direction:column}
-dialog label.opt{display:flex;align-items:center;gap:12px;min-height:46px;font-size:17px;cursor:pointer}
-dialog input[type=radio]{width:20px;height:20px;accent-color:var(--accent);margin:0}
+dialog label.opt{display:flex;align-items:center;gap:12px;min-height:46px;cursor:pointer}
+dialog input[type=radio]{width:20px;height:20px;accent-color:var(--btn);margin:0}
 dialog textarea{width:100%;min-height:84px;padding:12px;border:1.5px solid var(--line);border-radius:14px;font:inherit;font-size:16px;resize:vertical}
 dialog .row{display:flex;gap:10px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap}
-dialog .ghost{min-height:48px;padding:0 18px;border:0;border-radius:999px;background:var(--lilac);cursor:pointer;font-weight:600}
+dialog .ghost{min-height:48px;padding:0 18px;border:0;border-radius:999px;background:var(--blush);cursor:pointer;font-weight:600}
 dialog .btn{min-height:48px;font-size:16px}
 dialog .msg{margin:12px 0 0;font-size:16px}
 
 /* ---------- Топилмади ---------- */
-.missing{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px}
-.missing h1,.missing h2{margin:0;font:700 32px/1.1 var(--serif);color:var(--accent);text-wrap:balance}
+.missing{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:24px;background:var(--paper)}
+.missing h1,.missing h2{margin:0;font:700 32px/1.1 var(--serif);color:var(--berry);text-wrap:balance}
 .missing p{margin:0;color:var(--muted);max-width:32ch}
 .missing p:nth-of-type(1){padding-bottom:22px;margin-bottom:12px;border-bottom:1.5px solid var(--line)}
 
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important}
-  .hero > *,.block,.prog li{opacity:1;transform:none}
+  .hero .garland,.hero .center > *,.block,.prog li{opacity:1;transform:none}
   .petals{display:none}
 }
 </style>
@@ -175,12 +194,14 @@ dialog .msg{margin:12px 0 0;font-size:16px}
 
 <!-- Конверт: очилгандан кейин йўқолади -->
 <div class="cover" id="cover" hidden>
+  <img class="deco bl" data-art="corner" alt="">
+  <img class="deco tr" data-art="corner" alt="">
   <p class="word" data-word></p>
   <p class="pair" id="coverPair"></p>
   <div class="env" id="env">
     <div class="bob">
-      <img id="envImg" alt="">
-      <img class="seal" id="sealImg" alt="">
+      <img data-art="envelope" alt="">
+      <img class="seal" data-art="seal" alt="">
     </div>
   </div>
   <button class="btn" id="openBtn" type="button">
@@ -190,26 +211,37 @@ dialog .msg{margin:12px 0 0;font-size:16px}
 </div>
 
 <main id="main" hidden>
-  <img class="corner tl" data-corner alt=""><img class="corner tr" data-corner alt="">
-
   <section class="hero">
-    <img class="art" id="art" alt="" style="--i:0">
-    <h1 class="word" data-word style="--i:1"></h1>
-    <p class="names" style="--i:2"><span id="n1"></span><span class="amp">&amp;</span><span id="n2"></span></p>
-    <img class="divider" id="divider" alt="" style="--i:3">
-  </section>
-
-  <section class="block" id="photoBlock">
-    <figure class="photo" id="photo"></figure>
+    <img class="garland bleed" data-art="top" alt="">
+    <div class="center">
+      <h1 class="word" data-word style="--i:1"></h1>
+      <p class="names" style="--i:2"><span id="n1"></span><span class="amp">&amp;</span><span id="n2"></span></p>
+      <img class="bouquet" data-art="bottom" alt="" style="--i:3">
+      <p class="dateline" id="dateline" style="--i:4"></p>
+    </div>
   </section>
 
   <section class="block">
     <p class="guest" id="guest" hidden></p>
     <p class="lead" id="lead"></p>
-    <div class="date">
-      <span class="wd" id="wd"></span>
-      <div class="row"><span id="mon"></span><b id="day"></b><span id="yr"></span></div>
-      <span class="time" id="time"></span>
+    <img class="sprig" data-art="divider" alt="">
+  </section>
+
+  <section class="block" id="photoBlock">
+    <div class="photo-wrap">
+      <figure class="photo" id="photo"></figure>
+      <img class="flowers" data-art="corner" alt="">
+    </div>
+  </section>
+
+  <section class="block band bleed" id="calBlock">
+    <div style="padding-inline:var(--pad)">
+      <h2 class="label" id="calLabel"></h2>
+      <div class="cal">
+        <h3 id="calTitle"></h3>
+        <div class="grid" id="calGrid"></div>
+        <p class="when" id="calWhen"></p>
+      </div>
     </div>
   </section>
 
@@ -218,9 +250,11 @@ dialog .msg{margin:12px 0 0;font-size:16px}
     <div class="cd" id="cd"></div>
   </section>
 
-  <section class="block" id="progBlock">
-    <h2 class="label" id="progLabel"></h2>
-    <ol class="prog" id="prog"></ol>
+  <section class="block band bleed" id="progBlock">
+    <div style="padding-inline:var(--pad)">
+      <h2 class="label" id="progLabel"></h2>
+      <ol class="prog" id="prog"></ol>
+    </div>
   </section>
 
   <section class="block" id="venueBlock">
@@ -233,13 +267,16 @@ dialog .msg{margin:12px 0 0;font-size:16px}
     </a>
   </section>
 
-  <section class="block" id="hostsBlock">
-    <h2 class="label" data-t="hosts"></h2>
-    <p class="hosts" id="hosts"></p>
+  <section class="block closing">
+    <p class="thanks" id="thanks"></p>
+    <div id="hostsBlock">
+      <h2 class="label" data-t="hosts"></h2>
+      <p class="hosts" id="hosts"></p>
+    </div>
+    <img class="bouquet" data-art="bottom" alt="">
   </section>
 
   <footer class="foot">
-    <img class="corner bl" data-corner alt=""><img class="corner br" data-corner alt="">
     <span class="sign"><span id="tplName"></span> · <a href="https://shirin.day">shirin.day</a></span>
     <button class="report" id="reportBtn" type="button" data-t="report"></button>
   </footer>
@@ -269,17 +306,28 @@ dialog .msg{margin:12px 0 0;font-size:16px}
 <audio id="music" preload="none" loop></audio>
 
 <script>
-/* ===== Шаблон мавзулари: расмлар папкаси, асосий расм, мусиқа, урғу ранглари ===== */
+/* ===== Шаблон мавзулари: расмлар папкаси, мусиқа, ранглар ===== */
 const THEMES = {
-  saroy: {
-    name: "Saroy",
-    dir: "assets/saroy/",
-    art: "palace.webp",
-    music: "palace-first-dance",
-    colors: { "--word":"#E8458B", "--names":"#6D28D9", "--accent":"#6D28D9", "--accent2":"#E8458B" },
-    petals: ["#F9A8D4", "#F472B6", "#C4B5FD", "#FBCFE8"]
+  gul: {
+    name: "Gul",
+    dir: "assets/gul/",
+    music: "ever-after-waltz",
+    petals: 8, // petal-1..8.webp
+    colors: { "--rose":"#C64B78", "--berry":"#8E2C55", "--btn":"#B23A66", "--blush":"#FFF5F7", "--line":"#F0DDE4" }
   }
 };
+
+/* Дастур иконкалари (24×24, чизиқли) */
+const ICONS = {
+  welcome:'<path d="M3 20v-1.5A4.5 4.5 0 0 1 7.5 14h3a4.5 4.5 0 0 1 4.5 4.5V20"/><circle cx="9" cy="8" r="3.5"/><path d="M17 11.5a3 3 0 1 0 0-6M21 20v-1.5a4 4 0 0 0-2.5-3.7"/>',
+  rings:'<circle cx="9" cy="14.5" r="5"/><circle cx="15" cy="14.5" r="5"/><path d="M12 3.5l1.6 2-1.6 2-1.6-2Z"/>',
+  dinner:'<path d="M7 3v7a2 2 0 0 0 2 2v9M5 3v5M9 3v5M17 21V3c-2.2 1.2-3 4.2-3 7 0 2 1.2 3 3 3"/>',
+  dance:'<path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/>',
+  cake:'<path d="M4 21h16v-8H4Z"/><path d="M4 16.5c2 1.3 4 1.3 6 0s4-1.3 6 0 3 1.3 4 .6"/><path d="M12 9v4"/><path d="M12 6.2c.9-.9.9-1.9 0-2.9-.9 1-.9 2 0 2.9Z"/>',
+  heart:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/>',
+  flower:'<circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C11 6 13 4 12 3c-1 1 1 3 0 6.5M14.5 12c3.5-1 5.5 1 6.5 0-1-1-3 1-6.5 0M12 14.5c1 3.5-1 5.5 0 6.5 1-1-1-3 0-6.5M9.5 12C6 13 4 11 3 12c1 1 3-1 6.5 0"/>'
+};
+const HEART = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 21s-8-5-8-11.2A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 2.8C20 16 12 21 12 21Z"/></svg>';
 
 /* ===== Матнлар ===== */
 const T = {
@@ -290,16 +338,19 @@ const T = {
     lead: { wedding:"Сизни никоҳ тўйимизга лутфан таклиф этамиз" },
     months: ["январь","февраль","март","апрель","май","июнь","июль","август","сентябрь","октябрь","ноябрь","декабрь"],
     weekdays: ["якшанба","душанба","сешанба","чоршанба","пайшанба","жума","шанба"],
+    wdShort: ["Ду","Се","Чо","Па","Жу","Ша","Як"],
     at: t => `соат ${t}`,
+    calLabel: { wedding:"Тўй куни" },
     until: { wedding:"Тўйгача қолди" },
     units: ["кун","соат","дақиқа","сония"],
     program: { wedding:"Тўй дастури" },
+    thanks: "Сизни интизорлик билан кутамиз!",
     photoHint: "Шу ерда сизнинг суратингиз",
     venue: "Манзил", map: "2GIS'да очиш", hosts: "Ҳурмат билан",
     report: "Шикоят қилиш", repTitle: "Шикоят",
     reasons: ["Нотўғри маълумот","Ҳақоратли мазмун","Фирибгарлик","Бошқа сабаб"],
     comment: "Изоҳ (ихтиёрий)", send: "Юбориш", cancel: "Бекор қилиш",
-    pick: "Сабабни танланг", thanks: "Раҳмат! Шикоятингиз юборилди.", fail: "Юборилмади. Кейинроқ қайта уриниб кўринг.",
+    pick: "Сабабни танланг", thanks2: "Раҳмат! Шикоятингиз юборилди.", fail: "Юборилмади. Кейинроқ қайта уриниб кўринг.",
     soundOn: "Мусиқани ёқиш", soundOff: "Мусиқани ўчириш"
   },
   "kk": {
@@ -309,16 +360,19 @@ const T = {
     lead: { wedding:"Сізді үйлену тойымыздың қадірлі қонағы болуға шақырамыз" },
     months: ["қаңтар","ақпан","наурыз","сәуір","мамыр","маусым","шілде","тамыз","қыркүйек","қазан","қараша","желтоқсан"],
     weekdays: ["жексенбі","дүйсенбі","сейсенбі","сәрсенбі","бейсенбі","жұма","сенбі"],
+    wdShort: ["Дс","Сс","Ср","Бс","Жм","Сн","Жс"],
     at: t => `сағат ${t}`,
+    calLabel: { wedding:"Той күні" },
     until: { wedding:"Тойға дейін қалды" },
     units: ["күн","сағат","минут","секунд"],
     program: { wedding:"Той бағдарламасы" },
+    thanks: "Сіздерді асыға күтеміз!",
     photoHint: "Мұнда сіздің суретіңіз",
     venue: "Мекенжай", map: "2GIS-те ашу", hosts: "Құрметпен",
     report: "Шағымдану", repTitle: "Шағым",
     reasons: ["Қате мәлімет","Қорлайтын мазмұн","Алаяқтық","Басқа себеп"],
     comment: "Түсініктеме (міндетті емес)", send: "Жіберу", cancel: "Болдырмау",
-    pick: "Себебін таңдаңыз", thanks: "Рақмет! Шағымыңыз жіберілді.", fail: "Жіберілмеді. Кейінірек қайталап көріңіз.",
+    pick: "Себебін таңдаңыз", thanks2: "Рақмет! Шағымыңыз жіберілді.", fail: "Жіберілмеді. Кейінірек қайталап көріңіз.",
     soundOn: "Музыканы қосу", soundOff: "Музыканы өшіру"
   }
 };
@@ -333,30 +387,30 @@ const MISSING = {
 /* ===== Демо таклифномалар (база уланмагунча). 4-босқичда маълумот PocketBase'дан келади ===== */
 const DEMO = {
   "aziz-madina": {
-    demo:true, template:"saroy", kind:"wedding", lang:"uz-Cyrl",
+    demo:true, template:"gul", kind:"wedding", lang:"uz-Cyrl",
     name1:"Азиз", name2:"Мадина", date:"2026-12-12T18:00:00+05:00",
     photo:"assets/demo/couple.webp", // мижоз юклаган сурат (демода — намуна)
     program:[
-      { time:"18:00", title:"Меҳмонларни кутиб олиш" },
-      { time:"18:30", title:"Келин-куёвнинг кириб келиши" },
-      { time:"19:00", title:"Тантанали зиёфат" },
-      { time:"20:30", title:"Рақслар ва кўнгилочар дастур" },
-      { time:"22:00", title:"Тўй торти" }
+      { time:"18:00", title:"Меҳмонларни кутиб олиш", icon:"welcome" },
+      { time:"18:30", title:"Келин-куёвнинг кириб келиши", icon:"rings" },
+      { time:"19:00", title:"Тантанали зиёфат", icon:"dinner" },
+      { time:"20:30", title:"Рақслар ва кўнгилочар дастур", icon:"dance" },
+      { time:"22:00", title:"Тўй торти", icon:"cake" }
     ],
     venue:"«Гулистон» тўйхонаси", address:"Шымкент, Тауке хан шоҳ кўчаси, 45",
     map:"https://2gis.kz/shymkent/search/" + encodeURIComponent("Тауке хана 45"),
     lead:"", hosts:"Каримовлар оиласи", music:"palace-first-dance"
   },
   "nurlan-asel": {
-    demo:true, template:"saroy", kind:"wedding", lang:"kk",
+    demo:true, template:"gul", kind:"wedding", lang:"kk",
     name1:"Нұрлан", name2:"Әсел", date:"2026-12-19T18:00:00+05:00",
     photo:"assets/demo/couple.webp",
     program:[
-      { time:"18:00", title:"Қонақтарды қарсы алу" },
-      { time:"18:30", title:"Жас жұбайлардың кіруі" },
-      { time:"19:00", title:"Беташар" },
-      { time:"19:30", title:"Салтанатты дастарқан" },
-      { time:"21:00", title:"Би кеші" }
+      { time:"18:00", title:"Қонақтарды қарсы алу", icon:"welcome" },
+      { time:"18:30", title:"Жас жұбайлардың кіруі", icon:"rings" },
+      { time:"19:00", title:"Беташар", icon:"heart" },
+      { time:"19:30", title:"Салтанатты дастарқан", icon:"dinner" },
+      { time:"21:00", title:"Би кеші", icon:"dance" }
     ],
     venue:"«Алтын Орда» тойханасы", address:"Шымкент, Тәуке хан даңғылы, 45",
     map:"https://2gis.kz/shymkent/search/" + encodeURIComponent("Тауке хана 45"),
@@ -367,6 +421,7 @@ const DEMO = {
 const $ = s => document.querySelector(s);
 const qs = new URLSearchParams(location.search);
 const calm = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const cap = s => s.charAt(0).toUpperCase() + s.slice(1);
 
 /* Ҳавола: shirin.day/aziz-madina → slug "aziz-madina". Синов учун: invite.html?s=nurlan-asel */
 function getSlug(){
@@ -405,6 +460,24 @@ function eventParts(iso){
 
 let L, data, slug, theme;
 
+/* Тақвим: ой тўри, ҳафта душанбадан, тўй куни юракча ичида */
+function renderCalendar(e, kind){
+  $("#calLabel").textContent = L.calLabel[kind];
+  $("#calTitle").textContent = `${cap(L.months[e.month])} ${e.year}`;
+  const first = (new Date(Date.UTC(e.year, e.month, 1)).getUTCDay() + 6) % 7;   // 0 = душанба
+  const days = new Date(Date.UTC(e.year, e.month + 1, 0)).getUTCDate();
+  const grid = $("#calGrid");
+  L.wdShort.forEach(w => { const s = document.createElement("span"); s.className = "wd"; s.textContent = w; grid.append(s); });
+  for (let i = 0; i < first; i++) grid.append(document.createElement("span"));
+  for (let d = 1; d <= days; d++){
+    const c = document.createElement("span"); c.className = "d";
+    if (d === e.day){ c.classList.add("on"); c.innerHTML = HEART + `<span>${d}</span>`; }
+    else c.textContent = d;
+    grid.append(c);
+  }
+  $("#calWhen").textContent = `${cap(L.weekdays[e.wd])} · ${L.at(e.time)}`;
+}
+
 function render(res){
   if (res.state !== "ok"){
     (MISSING[res.state] || MISSING.missing).forEach(([t, s], i) => {
@@ -416,7 +489,7 @@ function render(res){
     return;
   }
   data = res.data;
-  theme = THEMES[data.template] || THEMES.saroy;
+  theme = THEMES[data.template] || THEMES.gul;
   L = T[data.lang] || T["uz-Cyrl"];
   const kind = data.kind || "wedding";
   const root = document.documentElement;
@@ -427,16 +500,15 @@ function render(res){
   document.title = `${data.name1} & ${data.name2} · ${word}`;
   document.querySelectorAll("[data-word]").forEach(el => el.textContent = word);
   document.querySelectorAll("[data-t]").forEach(el => { const v = L[el.dataset.t]; if (typeof v === "string") el.textContent = v; });
-
-  $("#envImg").src = theme.dir + "envelope.webp";
-  $("#sealImg").src = theme.dir + "seal.webp";
-  $("#art").src = theme.dir + theme.art;
-  $("#divider").src = theme.dir + "divider.webp";
-  document.querySelectorAll("[data-corner]").forEach(el => el.src = theme.dir + "corner.webp");
+  document.querySelectorAll("[data-art]").forEach(el => el.src = `${theme.dir}${el.dataset.art}.webp`);
 
   $("#coverPair").textContent = `${data.name1} & ${data.name2}`;
   $("#n1").textContent = data.name1;
   $("#n2").textContent = data.name2;
+
+  const e = eventParts(data.date);
+  const p2 = n => String(n).padStart(2, "0");
+  $("#dateline").textContent = `${p2(e.day)} · ${p2(e.month + 1)} · ${e.year}`;
 
   // Сурат: мижоз юклаган бўлса — сурат; демода — бўш жой; акс ҳолда бўлим йўқ
   if (data.photo){
@@ -454,12 +526,7 @@ function render(res){
   if (g){ $("#guest").textContent = L.dear(g); $("#guest").hidden = false; }
   $("#lead").textContent = data.lead || L.lead[kind];
 
-  const e = eventParts(data.date);
-  $("#wd").textContent = L.weekdays[e.wd];
-  $("#mon").textContent = L.months[e.month];
-  $("#day").textContent = e.day;
-  $("#yr").textContent = e.year;
-  $("#time").textContent = L.at(e.time);
+  renderCalendar(e, kind);
 
   $("#cdLabel").textContent = L.until[kind];
   $("#cd").innerHTML = L.units.map(() => `<div><b>0</b><span></span></div>`).join("");
@@ -473,9 +540,10 @@ function render(res){
     prog.forEach((x, k) => {
       const li = document.createElement("li"); li.style.setProperty("--k", k);
       const t = document.createElement("time"); t.textContent = x.time || "";
-      const dot = document.createElement("i"); dot.className = "dot";
+      const ic = document.createElement("i"); ic.className = "ic";
+      ic.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[x.icon] || ICONS.flower}</svg>`;
       const s = document.createElement("span"); s.textContent = x.title;
-      li.append(t, dot, s); $("#prog").append(li);
+      li.append(t, ic, s); $("#prog").append(li);
     });
   } else $("#progBlock").hidden = true;
 
@@ -484,6 +552,7 @@ function render(res){
   if (data.map) $("#mapBtn").href = data.map; else $("#mapBtn").hidden = true;
   if (!data.venue && !data.address) $("#venueBlock").hidden = true;
 
+  $("#thanks").textContent = L.thanks;
   if (data.hosts) $("#hosts").textContent = data.hosts; else $("#hostsBlock").hidden = true;
 
   $("#tplName").textContent = theme.name;
@@ -511,18 +580,18 @@ function revealOnScroll(){
   blocks.forEach(b => io.observe(b));
 }
 
-/* Гул барглари: очилгандан кейин секин тушиб туради */
+/* Гул барглари: акварел япроқлар секин тушиб, айланиб туради */
 function petals(n){
-  if (calm) return;
-  const box = $("#petals"), cs = theme.petals;
+  if (calm || !theme.petals) return;
+  const box = $("#petals");
   for (let i = 0; i < n; i++){
-    const p = document.createElement("i");
-    p.style.left = (Math.random() * 100).toFixed(1) + "%";
-    p.style.setProperty("--c", cs[i % cs.length]);
-    p.style.setProperty("--d", (10 + Math.random() * 8).toFixed(1) + "s");
-    p.style.setProperty("--delay", (Math.random() * 9).toFixed(1) + "s");
-    p.style.setProperty("--s", (0.6 + Math.random() * 0.7).toFixed(2));
-    p.style.setProperty("--x", (Math.random() * 90 - 45).toFixed(0) + "px");
+    const p = document.createElement("img");
+    p.src = `${theme.dir}petal-${(i % theme.petals) + 1}.webp`; p.alt = "";
+    p.style.left = (Math.random() * 96).toFixed(1) + "%";
+    p.style.setProperty("--w", (16 + Math.random() * 18).toFixed(0) + "px");
+    p.style.setProperty("--d", (11 + Math.random() * 8).toFixed(1) + "s");
+    p.style.setProperty("--delay", (Math.random() * 10).toFixed(1) + "s");
+    p.style.setProperty("--x", (Math.random() * 70 - 35).toFixed(0) + "px");
     box.append(p);
   }
 }
@@ -574,7 +643,7 @@ function openInvite(){
   document.body.classList.add("go");
   $("#sound").hidden = false;
   setTimeout(() => $("#cover").remove(), 1400);
-  setTimeout(() => petals(16), 600);
+  setTimeout(() => petals(14), 600);
   setTimeout(autoScroll, 4200); // аввал биринчи экран кўрсатилади
 }
 $("#openBtn").addEventListener("click", openInvite);
@@ -618,7 +687,7 @@ $("#repForm").addEventListener("submit", async ev => {
       body: JSON.stringify({ invite: slug, reason: REASON_CODES[picked.value], comment: $("#repComment").value.trim().slice(0, 500) })
     });
     if (!r.ok) throw new Error(r.status);
-    $("#repMsg").textContent = L.thanks; $("#repSend").hidden = true; $("#repCancel").textContent = "OK";
+    $("#repMsg").textContent = L.thanks2; $("#repSend").hidden = true; $("#repCancel").textContent = "OK";
   } catch(e) {
     $("#repMsg").textContent = L.fail;
   } finally { $("#repSend").disabled = false; }
