@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="uz-Cyrl">
+<html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shirin</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Тўй ва туғилган кун учун онлайн таклифномалар. Бир ҳавола, мусиқа, харита ва тескари санаш.">
+<meta name="description" content="Бесплатные онлайн-поздравления и приглашения. Одна ссылка, музыка и анимация. Русский, казахский и узбекский.">
 <meta property="og:title" content="Shirin">
-<meta property="og:description" content="Чиройли таклифнома бир ҳаволада">
+<meta property="og:description" content="Красивое поздравление в одной ссылке. Бесплатно.">
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#FCFAFD">
 <link rel="preload" href="assets/fonts/ShirinNueva-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -86,12 +86,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
   display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12cqw 8cqw;gap:3cqw}
 .phone.mini .screen{border-radius:24px}
 .screen svg.s-icon{width:18cqw;height:auto;color:var(--w)}
-/* Расмли шаблон (Gul): тепада гул гирляндаси, исмлар остида гулдаста */
-.screen.has-art{padding-top:44cqw}
-.screen .s-garland{position:absolute;top:0;left:0;width:100%;height:auto}
-.screen .s-bouquet{width:72cqw;height:auto;margin-block:-1cqw}
-.screen .s-title{font:400 11cqw/1.25 var(--script);color:var(--w)}
-.screen .s-names{font:400 8cqw/1.35 var(--script);color:var(--n)}
+.screen .s-title{font:400 10cqw/1.5 var(--script);color:var(--w)}
+.screen .s-names{font:400 8cqw/1.5 var(--script);color:var(--n);margin-top:1cqw}
 .screen .s-sign{position:absolute;left:0;right:0;bottom:5cqw;font:500 3cqw/1 var(--sans);letter-spacing:.14em;opacity:.4}
 .screen .s-line{font:500 4.2cqw/1.4 var(--sans);color:var(--muted);max-width:84%}
 .screen .s-rule{width:18cqw;height:1.5px;background:var(--w);opacity:.35}
@@ -121,8 +117,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .feature p{margin:0;color:var(--muted);font-size:16px}
 
 /* gallery */
-.gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
-@media (max-width:900px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;max-width:960px}
+@media (max-width:640px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
 .tpl{display:flex;flex-direction:column;gap:14px;border:0;background:none;padding:0;text-align:left;cursor:pointer;min-width:0}
 .tpl .phone{transition:transform .3s ease}
 .tpl:hover .phone{transform:translateY(-6px)}
@@ -133,7 +129,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 /* Шаблон номи: мелко ва ярим шаффоф, имзо каби */
 .sign{font-size:13px;font-weight:500;letter-spacing:.1em;color:var(--ink);opacity:.4}
 .tpl-row{display:flex;justify-content:space-between;gap:8px;font-size:15px;color:var(--muted)}
-.tpl-row b{color:var(--ink);font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+/* «Бепул» белгиси */
+.free{display:inline-block;padding:3px 10px;border-radius:99px;background:var(--pink-soft);color:var(--pink);font-size:13px;font-weight:700;white-space:nowrap}
 
 /* steps */
 .steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;counter-reset:s}
@@ -142,19 +139,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .steps li::before{content:"0" counter(s);font:700 44px/1 var(--serif);color:var(--pink)}
 .steps h3{margin:0;font-size:20px;font-weight:600}
 .steps p{margin:0;color:var(--muted)}
-
-/* pricing */
-.prices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start}
-@media (max-width:860px){.prices{grid-template-columns:1fr}}
-.price-card{background:var(--surface);border-radius:24px;padding:30px;display:flex;flex-direction:column;gap:18px;box-shadow:inset 0 0 0 1.5px var(--line)}
-.price-card.main{box-shadow:inset 0 0 0 2px var(--violet)}
-.price-card h3{margin:0;font-size:19px;font-weight:600}
-.price-card .amount{font:700 52px/1 var(--serif);font-variant-numeric:tabular-nums}
-.price-card .once{font-size:14px;color:var(--muted);margin-top:-10px}
-.price-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
-.price-card li{display:flex;gap:10px;align-items:flex-start;font-size:16px}
-.price-card li svg{width:20px;height:20px;flex:none;color:var(--violet);margin-top:2px}
-.price-card .btn{width:100%}
 
 /* faq */
 .faq{display:flex;flex-direction:column;max-width:780px}
@@ -199,7 +183,7 @@ dialog::backdrop{background:rgba(30,16,41,.55)}
 @media (max-width:640px){.sheet-title{justify-content:center}}
 .sheet h3{font:700 44px/1 var(--serif);margin:0}
 .sheet p{margin:0;color:var(--muted)}
-.sheet .amount{font:700 36px/1 var(--serif);font-variant-numeric:tabular-nums}
+.sheet .free{font-size:15px;padding:6px 14px}
 .close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:0;background:var(--lilac);cursor:pointer;display:grid;place-items:center}
 .close svg{width:18px;height:18px}
 
@@ -212,17 +196,18 @@ dialog::backdrop{background:rgba(30,16,41,.55)}
   <div class="wrap">
     <a class="logo" href="./" aria-label="Shirin">shirin<span>.</span></a>
     <nav class="nav">
-      <a href="#shablonlar" data-t="navTpl">Шаблонлар</a>
-      <a href="#narxlar" data-t="navPrice">Нархлар</a>
-      <a href="#savollar" data-t="navFaq">Саволлар</a>
-      <a href="#aloqa" data-t="contact">Алоқа</a>
+      <a href="#shablonlar" data-t="navTpl">Шаблоны</a>
+      <a href="#qanday" data-t="navHow">Как это работает</a>
+      <a href="#savollar" data-t="navFaq">Вопросы</a>
+      <a href="#aloqa" data-t="contact">Контакты</a>
     </nav>
     <div class="top-right">
-      <div class="lang" role="group" aria-label="Тил">
-        <button data-lang="uz-Cyrl" aria-pressed="true">Ўзб</button>
+      <div class="lang" role="group" aria-label="Язык">
+        <button data-lang="ru" aria-pressed="true">Рус</button>
         <button data-lang="kk" aria-pressed="false">Қаз</button>
+        <button data-lang="uz-Cyrl" aria-pressed="false">Ўзб</button>
       </div>
-      <button class="btn btn-soft btn-sm" id="loginBtn" data-t="login">Кириш</button>
+      <button class="btn btn-soft btn-sm" id="loginBtn" data-t="login">Войти</button>
     </div>
   </div>
 </header>
@@ -231,12 +216,12 @@ dialog::backdrop{background:rgba(30,16,41,.55)}
   <section class="hero">
     <div class="wrap">
       <div class="hero-text">
-        <span class="eyebrow" data-t="eyebrow">Онлайн таклифномалар</span>
+        <span class="eyebrow" data-t="eyebrow"></span>
         <h1 id="heroTitle"></h1>
         <p data-t="heroText"></p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#shablonlar" data-t="cta1">Шаблонни танлаш</a>
-          <a class="btn btn-soft" id="demoBtn" href="invite.html" data-t="cta2">Намунани кўриш</a>
+          <a class="btn btn-primary" href="#shablonlar" data-t="cta1"></a>
+          <a class="btn btn-soft" href="#qanday" data-t="cta2"></a>
         </div>
         <div class="hero-note">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
@@ -261,17 +246,10 @@ dialog::backdrop{background:rgba(30,16,41,.55)}
     </div>
   </section>
 
-  <section class="section band">
+  <section class="section band" id="qanday">
     <div class="wrap">
       <div class="head"><h2 data-t="howTitle"></h2></div>
       <ol class="steps" id="steps"></ol>
-    </div>
-  </section>
-
-  <section class="section" id="narxlar">
-    <div class="wrap">
-      <div class="head"><h2 data-t="priceTitle"></h2></div>
-      <div class="prices" id="prices"></div>
     </div>
   </section>
 
@@ -281,7 +259,7 @@ dialog::backdrop{background:rgba(30,16,41,.55)}
       <div class="faq" id="faq"></div>
       <div class="contact" id="aloqa">
         <div>
-          <h2 data-t="contact">Алоқа</h2>
+          <h2 data-t="contact"></h2>
           <p data-t="contactText"></p>
         </div>
         <a class="btn btn-primary wa-link" href="https://wa.me/77759018100" target="_blank" rel="noopener"></a>
@@ -304,7 +282,7 @@ dialog::backdrop{background:rgba(30,16,41,.55)}
     <span>© 2026 Shirin</span>
     <a class="wa wa-link" href="https://wa.me/77759018100" target="_blank" rel="noopener"></a>
     <nav>
-      <a href="oferta.html" data-t="offer"></a>
+      <a href="terms.html" data-t="terms"></a>
       <a href="privacy.html" data-t="privacy"></a>
       <a href="#aloqa" data-t="contact"></a>
     </nav>
@@ -320,116 +298,126 @@ dialog::backdrop{background:rgba(30,16,41,.55)}
         <span class="eyebrow" id="sheetCat"></span>
         <div class="sheet-title"><h3 id="sheetName"></h3><span class="sign" id="sheetSign"></span></div>
         <p id="sheetDesc"></p>
-        <span class="amount" id="sheetPrice"></span>
+        <span class="free" id="sheetFree"></span>
         <button class="btn btn-primary" id="chooseBtn" data-t="choose"></button>
-        <a class="btn btn-soft" id="sheetDemo" href="invite.html" data-t="openDemo" hidden></a>
       </div>
     </div>
   </div>
 </dialog>
 
 <script>
-/* ---------- Нархлар (₸). Тўй нархи ҳали тасдиқланмаган ---------- */
-const PRICES = { toy: 2990, tugilgan: 1990, tabrik: 990 };
-
-/* ---------- Жонли намуна (демо таклифнома) тил бўйича ---------- */
-const DEMO_URL = { "uz-Cyrl":"invite.html", "kk":"invite.html?s=nurlan-asel" };
+/* ---------- Асосий тил. Сайт рус, қозоқ ва ўзбек тилларида; бу ерда биттасини танланг: "ru" ёки "kk" ---------- */
+const DEFAULT_LANG = "ru";
 
 /* ---------- Алоқа ---------- */
 const WA = { href:"https://wa.me/77759018100", label:"+7 775 901 8100" };
 const WA_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.3Z"/><path d="M9.2 8.2c-.4 2.6 3.9 6.9 6.6 6.6l.7-1.6-1.9-.9-.8.8c-1-.4-2.5-1.9-2.9-2.9l.8-.8-.9-1.9Z"/></svg>';
 
-/* ---------- Шаблонлар ---------- */
+/* ---------- Шаблонлар: ҳаммаси бепул. Икки табрик ва битта таклифнома ---------- */
 const ICONS = {
-  saroy:'<circle cx="18" cy="28" r="10"/><circle cx="30" cy="28" r="10"/><path d="M24 8l3 4-3 4-3-4Z"/>',
-  gul:'<path d="M24 41V24"/><path d="M24 24c-6 0-10-5-10-12 4 2 7 2 10-2 3 4 6 4 10 2 0 7-4 12-10 12Z"/><path d="M24 35c-4-4-9-4-12-2M24 33c4-4 9-4 12-2"/>',
-  sham:'<path d="M19 41V20h10v21Z"/><path d="M24 20v-3"/><path d="M24 16c-2-2-2-5 0-8 2 3 2 6 0 8Z"/><path d="M14 41h20"/>',
-  tilak:'<path d="M8 14h32v22H8Z"/><path d="M8 14l16 12 16-12"/>'
+  yasmin:[0,72,144,216,288].map(a=>`<ellipse cx="24" cy="14" rx="4.5" ry="9" transform="rotate(${a} 24 24)"/>`).join("")+'<circle cx="24" cy="24" r="2.6"/>',
+  saroy:'<path d="M8 40V22h6v4h4V16l6-8 6 8v10h4v-4h6v18Z"/><path d="M21 40v-6a3 3 0 0 1 6 0v6"/>',
+  sham:'<path d="M19 41V20h10v21Z"/><path d="M24 20v-3"/><path d="M24 16c-2-2-2-5 0-8 2 3 2 6 0 8Z"/><path d="M14 41h20"/>'
 };
 const TEMPLATES = [
-  // w — асосий сўз ранги, n — исмлар ранги; art — тайёр расмлар папкаси (бўлса, икон ўрнига кўрсатилади)
-  {id:"gul",     cat:"toy",      kind:"wedding",  w:"#C64B78", n:"#8E2C55", art:"assets/gul/", names:"Азиз & Мадина", date:"2026-12-12T18:00:00+05:00", live:true},
-  {id:"saroy",   cat:"toy",      kind:"wedding",  w:"#E8458B", n:"#6D28D9", names:"Жасур & Нигора", date:"2026-12-19T18:00:00+05:00"}, // янги дизайн тайёрланмоқда
-  {id:"sham",    cat:"tugilgan", kind:"birthday", w:"#7C3AED", n:"#E8458B", names:"Камола", date:"2026-12-20T19:00:00+05:00"},
-  {id:"tilak",   cat:"tabrik",   kind:"greeting", w:"#6D28D9", n:"#E8458B", names:"Азиза"}
+  // kind: greeting — табрик, birthday — туғилган кунга таклифнома. w — асосий сўз ранги, n — исмлар ранги
+  {id:"yasmin", cat:"tabrik",   kind:"greeting", w:"#B7862A", n:"#3E7A4E", names:"Азиза"},   // жасмин: оқ, нафис сариқ, яшил барглар
+  {id:"saroy",  cat:"tabrik",   kind:"greeting", w:"#E8458B", n:"#6D28D9", names:"Мадина"},  // қаср
+  {id:"sham",   cat:"tugilgan", kind:"birthday", w:"#7C3AED", n:"#E8458B", names:"Камола", date:"2026-12-20T19:00:00+05:00"}
 ];
 
 /* ---------- Матнлар ---------- */
 const UI = {
- "uz-Cyrl":{
-  navTpl:"Шаблонлар", navPrice:"Нархлар", navFaq:"Саволлар", login:"Кириш", langLabel:"Тил", close:"Ёпиш",
-  eyebrow:"Онлайн таклифномалар", heroTitle:"Чиройли таклифнома <em>бир ҳаволада</em>",
-  heroText:"Шаблонни танланг, исмлар, сана ва манзилни киритинг. Ҳаволани меҳмонларга WhatsApp орқали юборинг.",
-  cta1:"Шаблонни танлаш", cta2:"Намунани кўриш", heroNote:"Меҳмонлар ҳеч нарса ўрнатмасдан телефонда очади",
-  featTitle:"Битта ҳаволада ҳаммаси",
-  feats:[["Мусиқа","Таклифнома очилганда майин куй янграйди"],["Харита","Бир босишда 2GIS орқали тўйхонага йўл"],["Тескари санаш","Тўйгача қолган кунлар ва соатлар"],["Меҳмон исми","Ҳар бир меҳмонга исми билан мурожаат"]],
-  tplTitle:"Шаблонлар", tplSub:"Ҳозирча тўртта, тез орада янгилари қўшилади.",
-  howTitle:"Қандай ишлайди",
-  steps:[["Шаблонни танланг","Тўй, туғилган кун ёки табрик учун"],["Маълумотларни киритинг","Исмлар, сана, вақт ва манзил"],["Тўланг ва юборинг","Kaspi орқали тўлов, кейин ҳаволани WhatsApp'да юборасиз"]],
-  priceTitle:"Нархлар", once:"Бир марталик тўлов",
-  includes:["Мусиқа ва харита","Тескари санаш","Меҳмон исми билан ҳавола","Матнни ўзгартириш"],
-  includesGreet:["Мусиқа","Исм билан ҳавола","Матнни ўзгартириш"],
-  faqTitle:"Кўп бериладиган саволлар",
-  faq:[["Меҳмонлар таклифномани қандай очади?","Сиз юборган ҳаволани босиб, телефонда очади. Ҳеч қандай илова ёки рўйхатдан ўтиш керак эмас."],
-       ["Қандай тўлайман?","Kaspi орқали ўтказма қиласиз. Тўлов текширилгач, таклифнома фаоллашади ва ҳавола тайёр бўлади. Савол бўлса, WhatsApp'га ёзинг:",true],
-       ["Тўловдан кейин матнни ўзгартирса бўладими?","Ҳа, исм, вақт ва манзилни кейин ҳам ўзгартириш мумкин."],
-       ["Таклифнома қанча вақт ишлайди?","Тадбир кунидан кейин яна 30 кун очиқ туради."]],
-  ctaTitle:"Биринчи таклифномангизни яратинг", ctaBtn:"Бошлаш",
-  offer:"Оммавий оферта", privacy:"Махфийлик сиёсати", contact:"Алоқа", choose:"Шу шаблонни танлаш", openDemo:"Намунани очиш",
-  contactText:"Савол бўлса, WhatsApp'га ёзинг.",
-  word:{invite:"Таклифнома", greet:"Табрик"},
-  occ:{toy:"Тўй",tugilgan:"Туғилган кун",tabrik:"Туғилган кун"},
-  cats:{toy:"Тўй таклифномаси",tugilgan:"Туғилган кун таклифномаси",tabrik:"Туғилган кун табриги"},
-  desc:{saroy:"Янги дизайн тайёрланмоқда.",gul:"Пионлар ва атиргуллар, пушти ва оқ ранглар. Нафис ва ёрқин.",sham:"Шамлар ва олтин. Туғилган кун ва юбилей учун.",tilak:"Табрикнома-мактуб. Яқинларингизни табрикланг."},
-  ph:{wedding:"Никоҳ тўйимизга таклиф этамиз", birthday:"Туғилган кунимга таклиф этаман", age:"25 ёшда", greetTitle:"Туғилган кунингиз муборак!", greetText:"Бахт, соғлик ва омад тилаймиз", units:["кун","соат","дақиқа","сония"], venueW:"Тўйхона, Шымкент", venueB:"Ресторан, Шымкент", map:"Харита"}
+ "ru":{
+  navTpl:"Шаблоны", navHow:"Как это работает", navFaq:"Вопросы", login:"Войти", langLabel:"Язык", close:"Закрыть",
+  eyebrow:"Бесплатные онлайн-поздравления", heroTitle:"Красивое поздравление <em>в одной ссылке</em>",
+  heroText:"Выберите шаблон, впишите имя и пожелание, отправьте ссылку в WhatsApp. Это бесплатно.",
+  cta1:"Выбрать шаблон", cta2:"Как это работает", heroNote:"Открывается на любом телефоне, ничего не нужно устанавливать",
+  featTitle:"Всё в одной ссылке",
+  feats:[["Музыка","Нежная мелодия звучит, как только открыли"],["Конверт и анимация","Ссылка открывается как настоящее письмо"],["По имени","Обращение к каждому по имени прямо в ссылке"],["Бесплатно","Создавайте и отправляйте сколько угодно"]],
+  tplTitle:"Шаблоны", tplSub:"Пока три, скоро добавим новые.",
+  howTitle:"Как это работает",
+  steps:[["Выберите шаблон","Поздравление или приглашение"],["Впишите текст","Имя, пожелание, дата и место"],["Отправьте ссылку","Поделитесь в WhatsApp"]],
+  faqTitle:"Частые вопросы",
+  faq:[["Это правда бесплатно?","Да. Создавать и отправлять поздравления и приглашения можно бесплатно."],
+       ["Как открыть поздравление?","Достаточно нажать на ссылку, и оно откроется в телефоне. Ничего устанавливать и регистрироваться не нужно."],
+       ["Можно изменить текст после отправки?","Да, текст можно поправить в любое время, ссылка останется прежней."],
+       ["Сколько работает ссылка?","Ещё 30 дней после даты праздника."],
+       ["Остались вопросы?","Напишите нам в WhatsApp:",true]],
+  ctaTitle:"Создайте первое поздравление", ctaBtn:"Начать",
+  terms:"Условия использования", privacy:"Политика конфиденциальности", contact:"Контакты", choose:"Выбрать этот шаблон", free:"Бесплатно",
+  contactText:"Есть вопросы? Напишите в WhatsApp.",
+  word:{invite:"Приглашение", greet:"Поздравление"},
+  occ:{tugilgan:"День рождения",tabrik:"День рождения"},
+  desc:{yasmin:"Цветы жасмина, белый и нежно-жёлтый. Лёгкое и светлое поздравление.",saroy:"Сказочный замок. Торжественное поздравление.",sham:"Свечи и тёплый свет. Приглашение на день рождения или юбилей."},
+  ph:{birthday:"Приглашаю на мой день рождения", age:"25 лет", greetTitle:"С днём рождения!", greetText:"Счастья, здоровья и удачи", units:["дней","часов","минут","секунд"], venueB:"Ресторан, Шымкент", map:"Карта"}
  },
  "kk":{
-  navTpl:"Үлгілер", navPrice:"Бағалар", navFaq:"Сұрақтар", login:"Кіру", langLabel:"Тіл", close:"Жабу",
-  eyebrow:"Онлайн шақырулар", heroTitle:"Әдемі шақыру <em>бір сілтемеде</em>",
-  heroText:"Үлгіні таңдаңыз, есімдерді, күнді және мекенжайды енгізіңіз. Сілтемені қонақтарға WhatsApp арқылы жіберіңіз.",
-  cta1:"Үлгі таңдау", cta2:"Мысалды көру", heroNote:"Қонақтар ештеңе орнатпай-ақ телефоннан ашады",
+  navTpl:"Үлгілер", navHow:"Қалай жұмыс істейді", navFaq:"Сұрақтар", login:"Кіру", langLabel:"Тіл", close:"Жабу",
+  eyebrow:"Тегін онлайн құттықтаулар", heroTitle:"Әдемі құттықтау <em>бір сілтемеде</em>",
+  heroText:"Үлгіні таңдаңыз, есім мен тілегіңізді жазыңыз, сілтемені WhatsApp арқылы жіберіңіз. Бұл тегін.",
+  cta1:"Үлгі таңдау", cta2:"Қалай жұмыс істейді", heroNote:"Кез келген телефонда ашылады, ештеңе орнатудың қажеті жоқ",
   featTitle:"Бәрі бір сілтемеде",
-  feats:[["Музыка","Шақыру ашылғанда әуен ойнайды"],["Карта","Бір басумен 2GIS арқылы тойханаға жол"],["Кері санақ","Тойға дейін қалған күндер мен сағаттар"],["Қонақтың есімі","Әр қонаққа есімімен арналған шақыру"]],
-  tplTitle:"Үлгілер", tplSub:"Әзірге төртеу, жақында жаңалары қосылады.",
+  feats:[["Музыка","Ашылған сәтте нәзік әуен ойнайды"],["Хатқалта және анимация","Сілтеме нағыз хат сияқты ашылады"],["Есіммен","Әр адамға есімімен арнау"],["Тегін","Қалағаныңызша жасап, жібере беріңіз"]],
+  tplTitle:"Үлгілер", tplSub:"Әзірге үшеу, жақында жаңалары қосылады.",
   howTitle:"Қалай жұмыс істейді",
-  steps:[["Үлгіні таңдаңыз","Той, туған күн немесе құттықтау үшін"],["Мәліметтерді енгізіңіз","Есімдер, күн, уақыт және мекенжай"],["Төлеп, жіберіңіз","Kaspi арқылы төлейсіз, содан кейін сілтемені WhatsApp-та жібересіз"]],
-  priceTitle:"Бағалар", once:"Бір реттік төлем",
-  includes:["Музыка және карта","Кері санақ","Қонақ есімімен сілтеме","Мәтінді өзгерту"],
-  includesGreet:["Музыка","Есіммен сілтеме","Мәтінді өзгерту"],
+  steps:[["Үлгіні таңдаңыз","Құттықтау немесе шақыру"],["Мәтінді жазыңыз","Есім, тілек, күні мен мекенжайы"],["Сілтемені жіберіңіз","WhatsApp арқылы бөлісіңіз"]],
   faqTitle:"Жиі қойылатын сұрақтар",
-  faq:[["Қонақтар шақыруды қалай ашады?","Сіз жіберген сілтемені басып, телефоннан ашады. Ешқандай қосымша немесе тіркелу қажет емес."],
-       ["Қалай төлеймін?","Kaspi арқылы аударым жасайсыз. Төлем тексерілгеннен кейін шақыру іске қосылып, сілтеме дайын болады. Сұрағыңыз болса, WhatsApp-қа жазыңыз:",true],
-       ["Төлемнен кейін мәтінді өзгертуге бола ма?","Иә, есімді, уақытты және мекенжайды кейін де өзгертуге болады."],
-       ["Шақыру қанша уақыт жұмыс істейді?","Іс-шарадан кейін тағы 30 күн ашық тұрады."]],
-  ctaTitle:"Алғашқы шақыруыңызды жасаңыз", ctaBtn:"Бастау",
-  offer:"Жария оферта", privacy:"Құпиялылық саясаты", contact:"Байланыс", choose:"Осы үлгіні таңдау", openDemo:"Мысалды ашу",
+  faq:[["Шынымен тегін бе?","Иә. Құттықтаулар мен шақыруларды жасау және жіберу тегін."],
+       ["Құттықтау қалай ашылады?","Сілтемені басу жеткілікті, ол телефонда ашылады. Ештеңе орнатудың немесе тіркелудің қажеті жоқ."],
+       ["Жібергеннен кейін мәтінді өзгертуге бола ма?","Иә, мәтінді кез келген уақытта түзетуге болады, сілтеме өзгермейді."],
+       ["Сілтеме қанша уақыт жұмыс істейді?","Мереке күнінен кейін тағы 30 күн ашық тұрады."],
+       ["Сұрағыңыз бар ма?","WhatsApp-қа жазыңыз:",true]],
+  ctaTitle:"Алғашқы құттықтауыңызды жасаңыз", ctaBtn:"Бастау",
+  terms:"Пайдалану шарттары", privacy:"Құпиялылық саясаты", contact:"Байланыс", choose:"Осы үлгіні таңдау", free:"Тегін",
   contactText:"Сұрағыңыз болса, WhatsApp-қа жазыңыз.",
   word:{invite:"Шақыру", greet:"Құттықтау"},
-  occ:{toy:"Той",tugilgan:"Туған күн",tabrik:"Туған күн"},
-  cats:{toy:"Той шақыруы",tugilgan:"Туған күнге шақыру",tabrik:"Туған күнмен құттықтау"},
-  desc:{saroy:"Жаңа дизайн дайындалуда.",gul:"Пиондар мен раушандар, қызғылт пен ақ түстер. Нәзік әрі жарқын.",sham:"Шамдар мен алтын. Туған күн мен мерейтойға.",tilak:"Құттықтау хат. Жақындарыңызды құттықтаңыз."},
-  ph:{wedding:"Үйлену тойымызға шақырамыз", birthday:"Туған күніме шақырамын", age:"25 жаста", greetTitle:"Туған күніңіз құтты болсын!", greetText:"Бақыт, денсаулық және сәттілік тілейміз", units:["күн","сағат","минут","секунд"], venueW:"Тойхана, Шымкент", venueB:"Мейрамхана, Шымкент", map:"Карта"}
+  occ:{tugilgan:"Туған күн",tabrik:"Туған күн"},
+  desc:{yasmin:"Жасмин гүлдері, ақ пен нәзік сары түстер. Жеңіл әрі жарқын құттықтау.",saroy:"Ертегі сарайы. Салтанатты құттықтау.",sham:"Шамдар мен жылы жарық. Туған күн немесе мерейтойға шақыру."},
+  ph:{birthday:"Туған күніме шақырамын", age:"25 жаста", greetTitle:"Туған күніңіз құтты болсын!", greetText:"Бақыт, денсаулық және сәттілік тілейміз", units:["күн","сағат","минут","секунд"], venueB:"Мейрамхана, Шымкент", map:"Карта"}
+ },
+ "uz-Cyrl":{
+  navTpl:"Шаблонлар", navHow:"Қандай ишлайди", navFaq:"Саволлар", login:"Кириш", langLabel:"Тил", close:"Ёпиш",
+  eyebrow:"Бепул онлайн табриклар", heroTitle:"Чиройли табрик <em>бир ҳаволада</em>",
+  heroText:"Шаблонни танланг, исм ва тилагингизни ёзинг, ҳаволани WhatsApp орқали юборинг. Бу бепул.",
+  cta1:"Шаблонни танлаш", cta2:"Қандай ишлайди", heroNote:"Ҳар қандай телефонда очилади, ҳеч нарса ўрнатиш шарт эмас",
+  featTitle:"Битта ҳаволада ҳаммаси",
+  feats:[["Мусиқа","Очилиши билан майин куй янграйди"],["Конверт ва анимация","Ҳавола ҳақиқий мактубдек очилади"],["Исм билан","Ҳар бир кишига исми билан мурожаат"],["Бепул","Хоҳлаганча яратинг ва юборинг"]],
+  tplTitle:"Шаблонлар", tplSub:"Ҳозирча учта, тез орада янгилари қўшилади.",
+  howTitle:"Қандай ишлайди",
+  steps:[["Шаблонни танланг","Табрик ёки таклифнома"],["Матнни ёзинг","Исм, тилак, сана ва манзил"],["Ҳаволани юборинг","WhatsApp орқали улашинг"]],
+  faqTitle:"Кўп бериладиган саволлар",
+  faq:[["Ростдан ҳам бепулми?","Ҳа. Табрик ва таклифномаларни яратиш ва юбориш бепул."],
+       ["Табрик қандай очилади?","Ҳаволани босиш кифоя, у телефонда очилади. Ҳеч нарса ўрнатиш ёки рўйхатдан ўтиш керак эмас."],
+       ["Юборгандан кейин матнни ўзгартирса бўладими?","Ҳа, матнни истаган вақтда тузатиш мумкин, ҳавола ўзгармайди."],
+       ["Ҳавола қанча вақт ишлайди?","Байрам кунидан кейин яна 30 кун очиқ туради."],
+       ["Саволингиз борми?","WhatsApp'га ёзинг:",true]],
+  ctaTitle:"Биринчи табрикингизни яратинг", ctaBtn:"Бошлаш",
+  terms:"Фойдаланиш шартлари", privacy:"Махфийлик сиёсати", contact:"Алоқа", choose:"Шу шаблонни танлаш", free:"Бепул",
+  contactText:"Савол бўлса, WhatsApp'га ёзинг.",
+  word:{invite:"Таклифнома", greet:"Табрик"},
+  occ:{tugilgan:"Туғилган кун",tabrik:"Туғилган кун"},
+  desc:{yasmin:"Жасмин гуллари, оқ ва нафис сариқ ранглар. Енгил ва ёруғ табрик.",saroy:"Эртак қасри. Тантанали табрик.",sham:"Шамлар ва илиқ нур. Туғилган кун ёки юбилейга таклиф."},
+  ph:{birthday:"Туғилган кунимга таклиф этаман", age:"25 ёшда", greetTitle:"Туғилган кунингиз муборак!", greetText:"Бахт, соғлик ва омад тилаймиз", units:["кун","соат","дақиқа","сония"], venueB:"Ресторан, Шымкент", map:"Харита"}
  }
 };
 
 const FEAT_ICONS = [
   '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
-  '<path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/>',
-  '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/>',
-  '<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>'
+  '<path d="M3 7h18v12H3Z"/><path d="M3 7l9 7 9-7"/>',
+  '<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>',
+  '<path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2Z"/><path d="M12 21V7"/><path d="M12 7H8a2.5 2.5 0 1 1 0-5c2.5 0 4 5 4 5Zm0 0h4a2.5 2.5 0 1 0 0-5c-2.5 0-4 5-4 5Z"/>'
 ];
-const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
 
 /* ---------- Ҳолат ---------- */
-let lang = "uz-Cyrl", current = null;
+let lang = DEFAULT_LANG, current = null;
 try { const s = localStorage.getItem("shirin-lang"); if (s && UI[s]) lang = s; } catch(e){}
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const tname = id => id.charAt(0).toUpperCase() + id.slice(1);          // Saroy, Gul, Sham, Tilak
-const fword = t => UI[lang].word[t.kind === "greeting" ? "greet" : "invite"]; // Таклифнома / Табрик
+const tname = id => id.charAt(0).toUpperCase() + id.slice(1);          // Yasmin, Saroy, Sham
+const fword = t => UI[lang].word[t.kind === "greeting" ? "greet" : "invite"]; // Поздравление / Приглашение
 const waLink = () => `<a href="${WA.href}" target="_blank" rel="noopener">${WA.label}</a>`;
-const price = n => n.toLocaleString("ru-RU").replace(/\s/g," ") + " ₸";
 const svg = (inner, cls, sw) => `<svg class="${cls||""}" viewBox="${cls==="s-icon"?"0 0 48 48":"0 0 24 24"}" fill="none" stroke="currentColor" stroke-width="${sw||2}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
 
 function fmtDate(iso){
@@ -438,13 +426,10 @@ function fmtDate(iso){
   return `${p(local.getDate())}.${p(local.getMonth()+1)}.${local.getFullYear()} · ${p(local.getHours())}:${p(local.getMinutes())}`;
 }
 
-/* Телефон ичидаги таклифнома */
+/* Телефон ичидаги намуна (расмлар тайёр бўлгунча — икон) */
 function phone(t, mini){
   const p = UI[lang].ph;
-  const pic = t.art
-    ? `<img class="s-garland" src="${t.art}top.webp" alt="" loading="lazy">`
-    : svg(ICONS[t.id],"s-icon",2);
-  const head = `${pic}<span class="s-title">${esc(fword(t))}</span>`;
+  const head = `${svg(ICONS[t.id],"s-icon",2)}<span class="s-title">${esc(fword(t))}</span>`;
   let body;
   if (t.kind === "greeting"){
     body = `${head}
@@ -452,18 +437,14 @@ function phone(t, mini){
       <span class="s-line" style="font-weight:600">${esc(p.greetTitle)}</span>
       <span class="s-line">${esc(p.greetText)}</span>`;
   } else {
-    const line = t.kind === "wedding" ? p.wedding : p.birthday;
-    const venue = t.kind === "wedding" ? p.venueW : p.venueB;
-    const age = t.kind === "birthday" ? `<span class="s-line">${esc(p.age)}</span>` : "";
     body = `${head}
-      <span class="s-names">${esc(t.names)}</span>${age}
-      ${t.art ? `<img class="s-bouquet" src="${t.art}bottom.webp" alt="" loading="lazy">` : ""}
-      <span class="s-line">${esc(line)}</span>${t.art ? "" : `<span class="s-rule"></span>`}
+      <span class="s-names">${esc(t.names)}</span><span class="s-line">${esc(p.age)}</span>
+      <span class="s-line">${esc(p.birthday)}</span><span class="s-rule"></span>
       <span class="s-date">${fmtDate(t.date)}</span>
       <div class="s-cd" data-cd="${t.date}">${p.units.map(u=>`<div><b>0</b><span>${esc(u)}</span></div>`).join("")}</div>
-      ${mini ? "" : `<span class="s-venue">${esc(venue)}</span><span class="s-map">${esc(p.map)}</span>`}`;
+      ${mini ? "" : `<span class="s-venue">${esc(p.venueB)}</span><span class="s-map">${esc(p.map)}</span>`}`;
   }
-  return `<div class="phone${mini?" mini":""}"${mini?' aria-hidden="true"':""}><div class="screen${t.art ? " has-art" : ""}" style="--w:${t.w};--n:${t.n}">${body}<span class="s-sign">${tname(t.id)}</span></div></div>`;
+  return `<div class="phone${mini?" mini":""}"${mini?' aria-hidden="true"':""}><div class="screen" style="--w:${t.w};--n:${t.n}">${body}<span class="s-sign">${tname(t.id)}</span></div></div>`;
 }
 
 function tickCountdowns(){
@@ -485,7 +466,6 @@ function render(){
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang===lang));
 
   $("#heroPhone").innerHTML = phone(TEMPLATES[0], false);
-  $("#demoBtn").href = DEMO_URL[lang];
 
   $("#features").innerHTML = d.feats.map((f,i)=>`
     <div class="feature"><span class="ic">${svg(FEAT_ICONS[i])}</span><h3>${esc(f[0])}</h3><p>${esc(f[1])}</p></div>`).join("");
@@ -495,21 +475,11 @@ function render(){
       ${phone(t, true)}
       <span class="tpl-meta">
         <span class="tpl-title"><span class="tpl-word">${esc(fword(t))}</span><span class="sign">${tname(t.id)}</span></span>
-        <span class="tpl-row"><span>${esc(d.occ[t.cat])}</span><b>${price(PRICES[t.cat])}</b></span>
+        <span class="tpl-row"><span>${esc(d.occ[t.cat])}</span><span class="free">${esc(d.free)}</span></span>
       </span>
     </button>`).join("");
 
   $("#steps").innerHTML = d.steps.map(s=>`<li><h3>${esc(s[0])}</h3><p>${esc(s[1])}</p></li>`).join("");
-
-  $("#prices").innerHTML = ["toy","tugilgan","tabrik"].map((c,i)=>{
-    const list = c === "tabrik" ? d.includesGreet : d.includes;
-    return `<div class="price-card${i===0?" main":""}">
-      <h3>${esc(d.cats[c])}</h3>
-      <span class="amount">${price(PRICES[c])}</span><span class="once">${esc(d.once)}</span>
-      <ul>${list.map(x=>`<li>${CHECK}<span>${esc(x)}</span></li>`).join("")}</ul>
-      <a class="btn ${i===0?"btn-primary":"btn-soft"}" href="#shablonlar">${esc(d.cta1)}</a>
-    </div>`;
-  }).join("");
 
   $("#faq").innerHTML = d.faq.map(q=>`<details><summary>${esc(q[0])}</summary><p>${esc(q[1])}${q[2] ? " " + waLink() : ""}</p></details>`).join("");
 
@@ -529,9 +499,7 @@ function fillSheet(t){
   $("#sheetName").textContent = fword(t);
   $("#sheetSign").textContent = tname(t.id);
   $("#sheetDesc").textContent = d.desc[t.id];
-  $("#sheetPrice").textContent = price(PRICES[t.cat]);
-  $("#sheetDemo").hidden = !t.live;            // жонли саҳифаси тайёр шаблонлар учун
-  $("#sheetDemo").href = DEMO_URL[lang];
+  $("#sheetFree").textContent = d.free;
   tickCountdowns();
 }
 
