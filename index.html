@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Shirin</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Бесплатные онлайн-поздравления и приглашения. Одна ссылка, музыка и анимация. Русский, казахский и узбекский.">
 <meta property="og:title" content="Shirin">
 <meta property="og:description" content="Красивое поздравление в одной ссылке. Бесплатно.">
@@ -16,30 +15,28 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 @font-face{font-family:"Shirin Nueva";src:url("assets/fonts/ShirinNueva-Regular.woff2") format("woff2");font-display:swap} /* Miama Nueva асосида, OFL */
-/* Shirin v3: serious invitation service. Elegant serif for the moments, Inter for the interface,
-   violet for action, pink for warmth, a live phone as the hero. Single light look by choice. */
+/* Shirin: бепул онлайн табриклар. Бинафша — ҳаракат, пушти — илиқлик. Шрифтлар: Cormorant (сарлавҳа), Inter (интерфейс), Shirin Nueva (табрик ичидаги исмлар). */
 :root{
   --bg:#FCFAFD; --surface:#FFFFFF; --ink:#1E1029; --muted:#6E6078; --line:#EEE6F2;
-  --violet:#6D28D9; --violet-deep:#5B21B6; --pink:#E8458B; --lilac:#F5F0FC; --pink-soft:#FDECF4;
+  --violet:#6D28D9; --violet-deep:#5B21B6; --pink:#E8458B; --lilac:#F5F0FC; --pink-soft:#FDECF4; --wa:#25D366; --wa-bubble:#DCF8C6;
   --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
-  --script:"Shirin Nueva","Segoe Script",cursive; /* ўзбек ва қозоқ ҳарфларининг ҳаммаси бор */
+  --script:"Shirin Nueva","Segoe Script",cursive;
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   color-scheme:light;
-  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box}
 html,body{margin:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
 body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
 [hidden]{display:none!important}
 button{font:inherit;color:inherit}
 a{color:inherit}
+img{display:block;max-width:100%}
 :focus-visible{outline:3px solid var(--pink);outline-offset:3px;border-radius:10px}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
 
-/* header */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(252,250,253,.92);border-bottom:1px solid transparent;transition:border-color .2s}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--bg)}
+/* ---------- Сарлавҳа ---------- */
+.top{position:sticky;top:0;z-index:30;background:rgba(252,250,253,.94);border-bottom:1px solid transparent;transition:border-color .2s;padding-top:env(safe-area-inset-top,0px)}
 .top.scrolled{border-bottom-color:var(--line)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:68px}
 .logo{font:700 30px/1 var(--serif);color:var(--violet);text-decoration:none;letter-spacing:-.01em}
@@ -47,100 +44,144 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .nav{display:flex;gap:28px;font-size:15px;font-weight:500;color:var(--muted)}
 .nav a{text-decoration:none}
 .nav a:hover{color:var(--ink)}
-@media (max-width:860px){.nav{display:none}}
+@media (max-width:900px){.nav{display:none}}
 .top-right{display:flex;align-items:center;gap:10px}
 .lang{display:flex;background:var(--lilac);border-radius:99px;padding:3px}
-.lang button{border:0;background:none;padding:7px 12px;border-radius:99px;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer}
+.lang button{border:0;background:none;padding:7px 11px;border-radius:99px;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer}
 .lang button[aria-pressed="true"]{background:var(--surface);color:var(--violet);box-shadow:0 1px 3px rgba(30,16,41,.08)}
+@media (max-width:400px){.lang button{padding:7px 8px}.top-right .btn-sm{padding:9px 12px}}
+@media (max-width:340px){.logo{font-size:26px}.top .wrap{gap:8px}.top-right{gap:6px}.lang button{padding:6px 6px;font-size:13px}.top-right .btn-sm{padding:8px 10px;font-size:14px}}
 
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .15s,box-shadow .15s,transform .15s;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:background .15s,box-shadow .15s,transform .15s;white-space:nowrap}
 .btn:active{transform:scale(.98)}
-.btn-primary{background:var(--violet);color:#fff;padding:16px 26px;font-size:17px}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-primary{background:var(--violet);color:#fff;padding:17px 28px;font-size:17px}
 .btn-primary:hover{background:var(--violet-deep)}
-.btn-pink{background:var(--pink);color:#fff;padding:16px 26px;font-size:17px}
+.btn-pink{background:var(--pink);color:#fff;padding:17px 28px;font-size:17px}
 .btn-pink:hover{background:#D63578}
-.btn-soft{background:var(--surface);color:var(--ink);padding:15px 24px;font-size:17px;box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-soft{background:var(--surface);color:var(--ink);padding:16px 24px;font-size:17px;box-shadow:inset 0 0 0 1.5px var(--line)}
 .btn-soft:hover{box-shadow:inset 0 0 0 1.5px var(--violet)}
 .btn-sm{padding:10px 16px;font-size:15px;border-radius:12px}
 
-/* hero */
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:48px;align-items:center;padding-block:56px 72px}
-@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:32px 56px}}
+/* ---------- Биринчи экран ---------- */
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;align-items:center;padding-block:48px 72px}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:28px;padding-block:24px 56px}}
 .hero-text{display:flex;flex-direction:column;align-items:flex-start;gap:22px;min-width:0}
-.eyebrow{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--pink)}
-.hero h1{font:700 clamp(44px,6.6vw,76px)/1.02 var(--serif);margin:0;letter-spacing:-.015em;text-wrap:balance}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 10px;border-radius:99px;background:var(--pink-soft);color:var(--pink);font-size:14px;font-weight:700}
+.badge svg{width:18px;height:18px}
+.hero h1{font:700 clamp(44px,6.4vw,74px)/1.02 var(--serif);margin:0;letter-spacing:-.015em;text-wrap:balance}
 .hero h1 em{font-style:italic;color:var(--violet)}
-.hero p{margin:0;font-size:clamp(17px,2vw,19px);color:var(--muted);max-width:42ch}
+.hero p.sub{margin:0;font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:40ch}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
-.hero-note{display:flex;align-items:center;gap:10px;font-size:15px;color:var(--muted)}
-.hero-note svg{width:20px;height:20px;color:var(--violet);flex:none}
-.hero-visual{position:relative;display:flex;justify-content:center;padding-block:24px}
-.hero-visual::before{content:"";position:absolute;inset:0 6%;border-radius:40px;background:linear-gradient(160deg,#8B5CF6,#EC4899)}
+.trust{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:15px;color:var(--muted)}
+.trust li{display:flex;align-items:center;gap:8px}
+.trust svg{width:18px;height:18px;color:var(--violet);flex:none}
 
-/* phone */
-/* Контейнер — телефон корпуси: экран ичидаги cqw ўлчамлари (падинглар ҳам) экран кенглигидан ҳисобланади */
-.phone{position:relative;width:100%;max-width:290px;aspect-ratio:9/18.5;min-height:0;container-type:inline-size;border-radius:44px;background:var(--ink);padding:10px;box-shadow:0 30px 60px -20px rgba(45,16,80,.35)}
-.phone.mini{max-width:none;border-radius:30px;padding:6px;box-shadow:0 14px 30px -14px rgba(45,16,80,.3)}
-/* Экран: оқ фон, ёрқин урғулар (--w асосий сўз, --n исмлар), таклифнома саҳифаси билан бир хил */
-.screen{position:relative;height:100%;border-radius:34px;overflow:hidden;background:#fff;color:var(--ink);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12cqw 8cqw;gap:3cqw}
-.phone.mini .screen{border-radius:24px}
-.screen svg.s-icon{width:18cqw;height:auto;color:var(--w)}
-.screen .s-title{font:400 10cqw/1.5 var(--script);color:var(--w)}
-.screen .s-names{font:400 8cqw/1.5 var(--script);color:var(--n);margin-top:1cqw}
-.screen .s-sign{position:absolute;left:0;right:0;bottom:5cqw;font:500 3cqw/1 var(--sans);letter-spacing:.14em;opacity:.4}
-.screen .s-line{font:500 4.2cqw/1.4 var(--sans);color:var(--muted);max-width:84%}
-.screen .s-rule{width:18cqw;height:1.5px;background:var(--w);opacity:.35}
-.screen .s-date{font:700 5.2cqw/1 var(--sans);color:var(--n);letter-spacing:.02em}
-.screen .s-cd{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5cqw;width:100%;margin-top:1cqw}
-.screen .s-cd div{background:var(--lilac);border-radius:3cqw;padding:2.4cqw 0;display:flex;flex-direction:column;gap:1cqw}
-.screen .s-cd b{font:700 6cqw/1 var(--sans);color:var(--n);font-variant-numeric:tabular-nums}
-.screen .s-cd span{font:500 2.8cqw/1 var(--sans);color:var(--muted)}
-.screen .s-venue{font:500 4cqw/1.3 var(--sans);color:var(--muted);margin-top:2cqw}
-.screen .s-map{font:600 3.8cqw/1 var(--sans);padding:3cqw 6cqw;border-radius:99px;background:var(--n);color:#fff}
+.hero-visual{position:relative;display:flex;justify-content:center;padding:28px 0 40px}
+.hero-visual::before{content:"";position:absolute;inset:0 4% 10%;border-radius:40px;background:linear-gradient(160deg,#8B5CF6,#EC4899)}
+/* Телефон ўраб турган блок тўлиқ кенгликда: акс ҳолда телефон (container-type) ва блок бир-бирини 0 гача қисади */
+#heroPhone{position:relative;z-index:1;width:100%;display:flex;justify-content:center}
+.chat{position:absolute;left:0;bottom:6px;z-index:2;width:min(270px,68%);padding:10px 10px 8px;border-radius:16px 16px 16px 4px;background:var(--wa-bubble);box-shadow:0 18px 40px -18px rgba(30,16,41,.45);font-size:14px;line-height:1.35;animation:pop .6s ease .4s both}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.96)}}
+.chat .lp{display:flex;gap:10px;align-items:center;padding:6px;border-radius:10px;background:rgba(255,255,255,.65);margin-bottom:6px}
+.chat .lp-img{flex:none;width:48px;height:48px;border-radius:8px;background:var(--cover-bg) center/cover}
+.chat .lp b{display:block;font-size:14px}
+.chat .lp span{font-size:12px;color:#5B6B5E}
+.chat p{margin:0 4px}
+.chat .meta{display:flex;justify-content:flex-end;align-items:center;gap:4px;font-size:11px;color:#5B6B5E;margin-top:2px}
+.chat .meta svg{width:16px;height:16px;color:#34B7F1}
+@media (max-width:900px){.chat{left:4%;bottom:0}}
 
-/* sections */
-.section{padding-block:72px}
+/* ---------- Телефон ---------- */
+.phone{position:relative;z-index:1;width:100%;max-width:280px;aspect-ratio:9/18.5;min-height:0;container-type:inline-size;border-radius:44px;background:var(--ink);padding:10px;box-shadow:0 30px 60px -20px rgba(45,16,80,.4)}
+@media (max-width:900px){.hero .phone{max-width:250px;margin-left:18%}}
+.screen{position:relative;height:100%;border-radius:34px;overflow:hidden;background:var(--cover-bg) center/cover;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12cqw 8cqw;gap:3cqw}
+
+/* ---------- Муқова (шаблон кўриниши): расм бўлса — расм, бўлмаса — ранг ва икон ---------- */
+.cover-txt .c-icon{width:18cqw;height:auto;color:var(--w)}
+.cover-txt .c-word{font:400 10cqw/1.5 var(--script);color:var(--w)}
+.cover-txt .c-name{font:400 8.5cqw/1.5 var(--script);color:var(--n)}
+.cover-txt .c-line{font:600 4.2cqw/1.4 var(--sans);color:var(--ink);opacity:.8;max-width:86%}
+.cover-txt .c-line.soft{font-weight:500;opacity:.65}
+.cover-txt .c-rule{width:18cqw;height:1.5px;background:var(--w);opacity:.35;margin-top:2cqw}
+.screen .c-open{margin-top:4cqw;font:600 4cqw/1 var(--sans);padding:3.4cqw 8cqw;border-radius:99px;background:var(--n);color:#fff}
+.screen .c-date{font:700 5cqw/1 var(--sans);color:var(--n)}
+.screen .c-cd{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5cqw;width:100%}
+.screen .c-cd div{background:rgba(255,255,255,.75);border-radius:3cqw;padding:2.4cqw 0;display:flex;flex-direction:column;gap:1cqw}
+.screen .c-cd b{font:700 6cqw/1 var(--sans);color:var(--n);font-variant-numeric:tabular-nums}
+.screen .c-cd span{font:500 2.8cqw/1 var(--sans);color:var(--muted)}
+.c-sign{position:absolute;left:0;right:0;bottom:5cqw;font:500 3cqw/1 var(--sans);letter-spacing:.14em;opacity:.4}
+
+/* ---------- Бўлимлар ---------- */
+.section{padding-block:76px}
 .section.band{background:var(--lilac)}
-.head{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;max-width:640px}
-.head h2{font:700 clamp(34px,4.6vw,52px)/1.05 var(--serif);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.head{display:flex;flex-direction:column;gap:10px;margin-bottom:36px;max-width:680px}
+.head h2{font:700 clamp(34px,4.4vw,50px)/1.05 var(--serif);margin:0;letter-spacing:-.01em;text-wrap:balance}
 .head p{margin:0;color:var(--muted);font-size:18px}
 
-/* features */
+/* Уч қадам — кичик кўргазмали расмлар билан */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:860px){.steps{grid-template-columns:1fr}}
+.step{background:var(--surface);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.step .num{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--violet);color:#fff;font-weight:700}
+.step h3{margin:0;font-size:20px;font-weight:600}
+.step p{margin:0;color:var(--muted);font-size:16px}
+.mini{margin-top:auto;padding:16px;border-radius:18px;background:var(--bg);min-height:118px;display:flex;align-items:center;justify-content:center}
+.mini-tpl{display:flex;gap:10px}
+.mini-tpl span{position:relative;width:54px;height:72px;border-radius:12px;background:var(--cover-bg) center/cover;display:grid;place-items:center;color:var(--w)}
+.mini-tpl span svg{width:24px;height:24px}
+.mini-tpl span.on{outline:2.5px solid var(--violet);outline-offset:2px}
+.mini-tpl span.on::after{content:"";position:absolute;top:-8px;right:-8px;width:20px;height:20px;border-radius:50%;background:var(--violet) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7'/%3E%3C/svg%3E") center/13px no-repeat}
+.mini-form{width:100%;display:flex;flex-direction:column;gap:8px}
+.mini-form div{display:flex;flex-direction:column;gap:2px;padding:7px 12px;border-radius:10px;background:var(--surface);box-shadow:inset 0 0 0 1.5px var(--line);font-size:15px}
+.mini-form small{font-size:11px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.mini-form div.focus{box-shadow:inset 0 0 0 2px var(--violet)}
+.mini-send{display:flex;flex-direction:column;align-items:center;gap:10px}
+.mini-send .link{font-size:14px;font-weight:600;color:var(--violet);background:var(--lilac);padding:6px 12px;border-radius:99px}
+.mini-send .wa-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:12px;background:var(--wa);color:#fff;font-size:15px;font-weight:600}
+.mini-send .wa-btn svg{width:18px;height:18px}
+
+/* Шаблонлар */
+.tpl-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 24px;margin-bottom:28px}
+.tpl-head .head{margin:0}
+.filter{display:flex;gap:4px;padding:4px;border-radius:99px;background:var(--lilac)}
+.filter button{border:0;background:none;padding:9px 16px;border-radius:99px;font-size:15px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap}
+.filter button[aria-pressed="true"]{background:var(--surface);color:var(--violet);box-shadow:0 1px 3px rgba(30,16,41,.08)}
+@media (max-width:560px){.filter{width:100%}.filter button{flex:1;padding:9px 6px;font-size:14px}}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+@media (max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
+.card{display:flex;flex-direction:column;border:0;padding:0;background:var(--surface);border-radius:24px;overflow:hidden;text-align:left;cursor:pointer;box-shadow:0 1px 0 var(--line),0 12px 30px -22px rgba(45,16,80,.35);transition:transform .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-4px);box-shadow:0 1px 0 var(--line),0 22px 40px -22px rgba(45,16,80,.45)}
+/* Ўз падингини % да: контейнернинг ўз cqw'си ойна кенглигидан ҳисобланиб, ички кенгликни қисиб юборади */
+.card .cover{position:relative;aspect-ratio:3/4;container-type:inline-size;background:var(--cover-bg) center/cover;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:12% 8%;text-align:center}
+/* Карточкадаги муқова телефондагидан каттароқ ёзилади */
+.card .cover .c-icon{width:22cqw}
+.card .cover .c-word{font-size:13cqw}
+.card .cover .c-name{font-size:11cqw}
+.card .cover .c-line{font-size:5cqw}
+.card .cover .c-rule{width:22cqw;margin-top:3cqw}
+.card-body{display:flex;flex-direction:column;gap:6px;padding:16px 18px 18px}
+.card-title{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.card-title b{font:700 26px/1.1 var(--serif)}
+.card-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:15px;color:var(--muted)}
+.card .pick{margin-top:8px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:12px;background:var(--lilac);color:var(--violet);font-weight:600;font-size:15px}
+.card:hover .pick{background:var(--violet);color:#fff}
+@media (max-width:560px){.card-body{padding:12px}.card-title{flex-direction:column;gap:2px}.card-title b{font-size:21px}.card-meta{flex-direction:column;align-items:flex-start;gap:6px;font-size:14px}}
+/* Шаблон номи: мелко ва ярим шаффоф, имзо каби */
+.sign{font-size:13px;font-weight:500;letter-spacing:.1em;color:var(--ink);opacity:.4}
+.free{display:inline-block;padding:3px 10px;border-radius:99px;background:var(--pink-soft);color:var(--pink);font-size:13px;font-weight:700;white-space:nowrap}
+
+/* Имкониятлар */
 .features{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
 @media (max-width:900px){.features{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.features{grid-template-columns:1fr}}
-.feature{background:var(--surface);border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:12px}
+.feature{background:var(--surface);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:12px}
 .feature .ic{width:48px;height:48px;border-radius:14px;background:var(--pink-soft);color:var(--pink);display:grid;place-items:center}
 .feature .ic svg{width:24px;height:24px}
 .feature h3{margin:0;font-size:19px;font-weight:600}
 .feature p{margin:0;color:var(--muted);font-size:16px}
 
-/* gallery */
-.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;max-width:960px}
-@media (max-width:640px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
-.tpl{display:flex;flex-direction:column;gap:14px;border:0;background:none;padding:0;text-align:left;cursor:pointer;min-width:0}
-.tpl .phone{transition:transform .3s ease}
-.tpl:hover .phone{transform:translateY(-6px)}
-.tpl-meta{display:flex;flex-direction:column;gap:4px;padding-inline:4px}
-.tpl-title{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;column-gap:10px}
-.tpl-word{font:700 28px/1.1 var(--serif)}
-@media (max-width:480px){.tpl-title{flex-direction:column;align-items:flex-start;gap:2px}.tpl-word{font-size:24px}}
-/* Шаблон номи: мелко ва ярим шаффоф, имзо каби */
-.sign{font-size:13px;font-weight:500;letter-spacing:.1em;color:var(--ink);opacity:.4}
-.tpl-row{display:flex;justify-content:space-between;gap:8px;font-size:15px;color:var(--muted)}
-/* «Бепул» белгиси */
-.free{display:inline-block;padding:3px 10px;border-radius:99px;background:var(--pink-soft);color:var(--pink);font-size:13px;font-weight:700;white-space:nowrap}
-
-/* steps */
-.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;counter-reset:s}
-@media (max-width:760px){.steps{grid-template-columns:1fr}}
-.steps li{counter-increment:s;display:flex;flex-direction:column;gap:10px;padding-top:22px;border-top:2px solid var(--line)}
-.steps li::before{content:"0" counter(s);font:700 44px/1 var(--serif);color:var(--pink)}
-.steps h3{margin:0;font-size:20px;font-weight:600}
-.steps p{margin:0;color:var(--muted)}
-
-/* faq */
+/* Саволлар */
 .faq{display:flex;flex-direction:column;max-width:780px}
 .faq details{border-bottom:1px solid var(--line)}
 .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font-size:19px;font-weight:600}
@@ -150,15 +191,13 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .faq details p{margin:0 0 22px;color:var(--muted);max-width:62ch}
 .faq details p a{color:var(--violet);font-weight:600;white-space:nowrap}
 
-/* contact */
-.contact{margin-top:40px;max-width:780px;scroll-margin-top:96px;background:var(--surface);border-radius:28px;padding:clamp(24px,4vw,36px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px}
+/* Алоқа */
+.contact{margin-top:40px;max-width:780px;background:var(--surface);border-radius:28px;padding:clamp(24px,4vw,36px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 32px}
 .contact h2{font:700 clamp(30px,4vw,40px)/1.05 var(--serif);margin:0}
 .contact p{margin:6px 0 0;color:var(--muted)}
-.btn svg{width:22px;height:22px;flex:none}
 
-/* cta */
 .cta{background:var(--violet);color:#fff;border-radius:32px;padding:clamp(36px,6vw,64px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
-.cta h2{font:700 clamp(32px,4.4vw,48px)/1.05 var(--serif);margin:0;max-width:16ch;text-wrap:balance}
+.cta h2{font:700 clamp(32px,4.4vw,48px)/1.05 var(--serif);margin:0;max-width:18ch;text-wrap:balance}
 
 footer .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between;align-items:center;padding-block:40px 48px;color:var(--muted);font-size:15px}
 footer nav{display:flex;flex-wrap:wrap;gap:12px 24px}
@@ -167,21 +206,32 @@ footer a:hover{color:var(--violet)}
 footer .wa{display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:600;white-space:nowrap}
 footer .wa svg{width:20px;height:20px;color:var(--violet)}
 
-/* sheet */
+/* Телефонда пастки қотирилган тугма */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:25;padding:12px max(16px,env(safe-area-inset-left)) calc(12px + env(safe-area-inset-bottom,0px));background:rgba(252,250,253,.96);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .25s ease}
+.mbar.show{transform:none}
+.mbar .btn{width:100%}
+@media (min-width:901px){.mbar{display:none}}
+@media (max-width:900px){footer .wrap{padding-bottom:110px}}
+
+/* Хабарча */
+.toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom,0px));z-index:60;transform:translate(-50%,20px);opacity:0;pointer-events:none;width:max-content;max-width:calc(100% - 32px);padding:14px 18px;border-radius:14px;background:var(--ink);color:#fff;font-size:15px;text-align:center;transition:opacity .2s,transform .2s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Шаблон ойнаси */
 dialog{border:0;padding:0;background:transparent;max-width:none;max-height:none;width:100%;height:100%;margin:0}
 dialog::backdrop{background:rgba(30,16,41,.55)}
 .sheet-wrap{position:fixed;inset:0;display:flex;padding:16px;padding-bottom:max(16px,env(safe-area-inset-bottom,0px));overflow:auto}
-/* margin:auto — экрандан баланд бўлса ҳам юқори қисми кесилмайди, айлантириб кўриш мумкин */
+/* margin:auto — экрандан баланд бўлса ҳам юқори қисми кесилмайди */
 .sheet{margin:auto;width:100%;max-width:760px;background:var(--surface);border-radius:32px;padding:28px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:32px;align-items:center;position:relative;animation:up .25s ease}
-@media (max-width:640px){.sheet{grid-template-columns:1fr;gap:20px;padding:20px;justify-items:center;text-align:center}.sheet .phone{max-width:230px}}
+@media (max-width:640px){.sheet{grid-template-columns:1fr;gap:20px;padding:20px;justify-items:center;text-align:center}.sheet .phone{max-width:220px}}
 @keyframes up{from{transform:translateY(20px);opacity:0}}
-.sheet .phone{width:260px;max-width:100%}
+.sheet .phone{width:250px;max-width:100%}
 .sheet-info{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
 @media (max-width:640px){.sheet-info{align-items:center}}
-.sheet-info .eyebrow{margin:0}
+.sheet-info .eyebrow{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--pink)}
 .sheet-title{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px}
 @media (max-width:640px){.sheet-title{justify-content:center}}
-.sheet h3{font:700 44px/1 var(--serif);margin:0}
+.sheet h3{font:700 42px/1 var(--serif);margin:0}
 .sheet p{margin:0;color:var(--muted)}
 .sheet .free{font-size:15px;padding:6px 14px}
 .close{position:absolute;top:16px;right:16px;width:40px;height:40px;border-radius:50%;border:0;background:var(--lilac);cursor:pointer;display:grid;place-items:center}
@@ -196,18 +246,18 @@ dialog::backdrop{background:rgba(30,16,41,.55)}
   <div class="wrap">
     <a class="logo" href="./" aria-label="Shirin">shirin<span>.</span></a>
     <nav class="nav">
-      <a href="#shablonlar" data-t="navTpl">Шаблоны</a>
-      <a href="#qanday" data-t="navHow">Как это работает</a>
-      <a href="#savollar" data-t="navFaq">Вопросы</a>
-      <a href="#aloqa" data-t="contact">Контакты</a>
+      <a href="#shablonlar" data-t="navTpl"></a>
+      <a href="#qanday" data-t="navHow"></a>
+      <a href="#savollar" data-t="navFaq"></a>
+      <a href="#aloqa" data-t="contact"></a>
     </nav>
     <div class="top-right">
-      <div class="lang" role="group" aria-label="Язык">
+      <div class="lang" role="group">
         <button data-lang="ru" aria-pressed="true">Рус</button>
         <button data-lang="kk" aria-pressed="false">Қаз</button>
         <button data-lang="uz-Cyrl" aria-pressed="false">Ўзб</button>
       </div>
-      <button class="btn btn-soft btn-sm" id="loginBtn" data-t="login">Войти</button>
+      <button class="btn btn-soft btn-sm soon" data-t="login"></button>
     </div>
   </div>
 </header>
@@ -216,33 +266,19 @@ dialog::backdrop{background:rgba(30,16,41,.55)}
   <section class="hero">
     <div class="wrap">
       <div class="hero-text">
-        <span class="eyebrow" data-t="eyebrow"></span>
+        <span class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2Z"/><path d="M12 21V7"/><path d="M12 7H8a2.5 2.5 0 1 1 0-5c2.5 0 4 5 4 5Zm0 0h4a2.5 2.5 0 1 0 0-5c-2.5 0-4 5-4 5Z"/></svg><span data-t="badge"></span></span>
         <h1 id="heroTitle"></h1>
-        <p data-t="heroText"></p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#shablonlar" data-t="cta1"></a>
+        <p class="sub" data-t="heroText"></p>
+        <div class="hero-actions" id="heroActions">
+          <a class="btn btn-primary" href="#shablonlar"><span data-t="cta1"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <a class="btn btn-soft" href="#qanday" data-t="cta2"></a>
         </div>
-        <div class="hero-note">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
-          <span data-t="heroNote"></span>
-        </div>
+        <ul class="trust" id="trust"></ul>
       </div>
-      <div class="hero-visual" id="heroPhone"></div>
-    </div>
-  </section>
-
-  <section class="section band">
-    <div class="wrap">
-      <div class="head"><h2 data-t="featTitle"></h2></div>
-      <div class="features" id="features"></div>
-    </div>
-  </section>
-
-  <section class="section" id="shablonlar">
-    <div class="wrap">
-      <div class="head"><h2 data-t="tplTitle"></h2><p data-t="tplSub"></p></div>
-      <div class="gallery" id="gallery"></div>
+      <div class="hero-visual">
+        <div id="heroPhone"></div>
+        <div class="chat" id="chat" aria-hidden="true"></div>
+      </div>
     </div>
   </section>
 
@@ -253,7 +289,24 @@ dialog::backdrop{background:rgba(30,16,41,.55)}
     </div>
   </section>
 
-  <section class="section band" id="savollar">
+  <section class="section" id="shablonlar">
+    <div class="wrap">
+      <div class="tpl-head">
+        <div class="head"><h2 data-t="tplTitle"></h2><p data-t="tplSub"></p></div>
+        <div class="filter" id="filter" role="group"></div>
+      </div>
+      <div class="cards" id="cards"></div>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap">
+      <div class="head"><h2 data-t="featTitle"></h2></div>
+      <div class="features" id="features"></div>
+    </div>
+  </section>
+
+  <section class="section" id="savollar">
     <div class="wrap">
       <div class="head"><h2 data-t="faqTitle"></h2></div>
       <div class="faq" id="faq"></div>
@@ -289,6 +342,9 @@ dialog::backdrop{background:rgba(30,16,41,.55)}
   </div>
 </footer>
 
+<div class="mbar" id="mbar"><a class="btn btn-primary" href="#shablonlar" data-t="cta1"></a></div>
+<div class="toast" id="toast" role="status"></div>
+
 <dialog id="sheet" aria-labelledby="sheetName">
   <div class="sheet-wrap" id="sheetWrap">
     <div class="sheet">
@@ -299,7 +355,7 @@ dialog::backdrop{background:rgba(30,16,41,.55)}
         <div class="sheet-title"><h3 id="sheetName"></h3><span class="sign" id="sheetSign"></span></div>
         <p id="sheetDesc"></p>
         <span class="free" id="sheetFree"></span>
-        <button class="btn btn-primary" id="chooseBtn" data-t="choose"></button>
+        <button class="btn btn-primary soon" data-t="choose"></button>
       </div>
     </div>
   </div>
@@ -312,32 +368,39 @@ const DEFAULT_LANG = "ru";
 /* ---------- Алоқа ---------- */
 const WA = { href:"https://wa.me/77759018100", label:"+7 775 901 8100" };
 const WA_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.3Z"/><path d="M9.2 8.2c-.4 2.6 3.9 6.9 6.6 6.6l.7-1.6-1.9-.9-.8.8c-1-.4-2.5-1.9-2.9-2.9l.8-.8-.9-1.9Z"/></svg>';
+const CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
+const TICKS = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 13l4 4 8-9M10 15.5l1.5 1.5 8-9"/></svg>';
 
-/* ---------- Шаблонлар: ҳаммаси бепул. Икки табрик ва битта таклифнома ---------- */
+/* ---------- Шаблонлар: ҳаммаси бепул ----------
+   cover — муқова расми (тайёр бўлганда: "assets/covers/<id>.webp"); ҳозирча bg ранги ва икон.
+   w — асосий сўз ранги, n — исм ранги. */
 const ICONS = {
   yasmin:[0,72,144,216,288].map(a=>`<ellipse cx="24" cy="14" rx="4.5" ry="9" transform="rotate(${a} 24 24)"/>`).join("")+'<circle cx="24" cy="24" r="2.6"/>',
   saroy:'<path d="M8 40V22h6v4h4V16l6-8 6 8v10h4v-4h6v18Z"/><path d="M21 40v-6a3 3 0 0 1 6 0v6"/>',
   sham:'<path d="M19 41V20h10v21Z"/><path d="M24 20v-3"/><path d="M24 16c-2-2-2-5 0-8 2 3 2 6 0 8Z"/><path d="M14 41h20"/>'
 };
 const TEMPLATES = [
-  // kind: greeting — табрик, birthday — туғилган кунга таклифнома. w — асосий сўз ранги, n — исмлар ранги
-  {id:"yasmin", cat:"tabrik",   kind:"greeting", w:"#B7862A", n:"#3E7A4E", names:"Азиза"},   // жасмин: оқ, нафис сариқ, яшил барглар
-  {id:"saroy",  cat:"tabrik",   kind:"greeting", w:"#E8458B", n:"#6D28D9", names:"Мадина"},  // қаср
-  {id:"sham",   cat:"tugilgan", kind:"birthday", w:"#7C3AED", n:"#E8458B", names:"Камола", date:"2026-12-20T19:00:00+05:00"}
+  {id:"saroy",  kind:"greeting", cover:null, bg:"linear-gradient(165deg,#FFF5FB,#EADFFC)", w:"#D9467F", n:"#6D28D9", names:"Мадина"},  // сказочный замок
+  {id:"yasmin", kind:"greeting", cover:null, bg:"linear-gradient(165deg,#FFFEF7,#FBF0C4)", w:"#B7862A", n:"#3E7A4E", names:"Азиза"},   // жасмин
+  {id:"sham",   kind:"invite",   cover:null, bg:"linear-gradient(165deg,#FFF8F1,#FCE2CF)", w:"#C2410C", n:"#7C3AED", names:"Камола", date:"2026-12-20T19:00:00+05:00"} // свечи
 ];
 
 /* ---------- Матнлар ---------- */
 const UI = {
  "ru":{
   navTpl:"Шаблоны", navHow:"Как это работает", navFaq:"Вопросы", login:"Войти", langLabel:"Язык", close:"Закрыть",
-  eyebrow:"Бесплатные онлайн-поздравления", heroTitle:"Красивое поздравление <em>в одной ссылке</em>",
-  heroText:"Выберите шаблон, впишите имя и пожелание, отправьте ссылку в WhatsApp. Это бесплатно.",
-  cta1:"Выбрать шаблон", cta2:"Как это работает", heroNote:"Открывается на любом телефоне, ничего не нужно устанавливать",
-  featTitle:"Всё в одной ссылке",
-  feats:[["Музыка","Нежная мелодия звучит, как только открыли"],["Конверт и анимация","Ссылка открывается как настоящее письмо"],["По имени","Обращение к каждому по имени прямо в ссылке"],["Бесплатно","Создавайте и отправляйте сколько угодно"]],
-  tplTitle:"Шаблоны", tplSub:"Пока три, скоро добавим новые.",
-  howTitle:"Как это работает",
-  steps:[["Выберите шаблон","Поздравление или приглашение"],["Впишите текст","Имя, пожелание, дата и место"],["Отправьте ссылку","Поделитесь в WhatsApp"]],
+  badge:"Бесплатно", heroTitle:"Красивое поздравление <em>в одной ссылке</em>",
+  heroText:"Выберите шаблон, впишите имя и пожелание и отправьте ссылку в WhatsApp.",
+  cta1:"Создать поздравление", cta2:"Как это работает",
+  trust:["Бесплатно","Открывается без приложений","Русский, казахский, узбекский"],
+  chat:{title:"Поздравление для Мадины", msg:"Мадина, это для тебя!"},
+  howTitle:"Три шага, и готово",
+  steps:[["Выберите шаблон","Поздравление или приглашение"],["Впишите имя и пожелание","Можно добавить дату и место"],["Отправьте ссылку","В WhatsApp одним нажатием"]],
+  mini:{f1:"Имя", v1:"Мадина", f2:"Пожелание", v2:"Счастья и здоровья!", send:"Отправить в WhatsApp", link:"shirin.day/madina"},
+  tplTitle:"Шаблоны", tplSub:"Все шаблоны бесплатные. Скоро добавим новые.",
+  filter:{all:"Все", greeting:"Поздравления", invite:"Приглашения"}, pick:"Выбрать",
+  featTitle:"Что внутри",
+  feats:[["Музыка","Нежная мелодия звучит, как только открыли"],["Конверт и анимация","Открывается как настоящее письмо"],["По имени","Обращение к каждому по имени"],["Три языка","Русский, казахский и узбекский"]],
   faqTitle:"Частые вопросы",
   faq:[["Это правда бесплатно?","Да. Создавать и отправлять поздравления и приглашения можно бесплатно."],
        ["Как открыть поздравление?","Достаточно нажать на ссылку, и оно откроется в телефоне. Ничего устанавливать и регистрироваться не нужно."],
@@ -347,21 +410,26 @@ const UI = {
   ctaTitle:"Создайте первое поздравление", ctaBtn:"Начать",
   terms:"Условия использования", privacy:"Политика конфиденциальности", contact:"Контакты", choose:"Выбрать этот шаблон", free:"Бесплатно",
   contactText:"Есть вопросы? Напишите в WhatsApp.",
-  word:{invite:"Приглашение", greet:"Поздравление"},
-  occ:{tugilgan:"День рождения",tabrik:"День рождения"},
+  soon:"Создание поздравлений откроем совсем скоро",
+  word:{invite:"Приглашение", greeting:"Поздравление"},
+  occ:"День рождения",
   desc:{yasmin:"Цветы жасмина, белый и нежно-жёлтый. Лёгкое и светлое поздравление.",saroy:"Сказочный замок. Торжественное поздравление.",sham:"Свечи и тёплый свет. Приглашение на день рождения или юбилей."},
-  ph:{birthday:"Приглашаю на мой день рождения", age:"25 лет", greetTitle:"С днём рождения!", greetText:"Счастья, здоровья и удачи", units:["дней","часов","минут","секунд"], venueB:"Ресторан, Шымкент", map:"Карта"}
+  ph:{birthday:"Приглашаю на мой день рождения", age:"25 лет", greetTitle:"С днём рождения!", greetText:"Счастья, здоровья и удачи", units:["дней","часов","минут","секунд"], open:"Открыть"}
  },
  "kk":{
   navTpl:"Үлгілер", navHow:"Қалай жұмыс істейді", navFaq:"Сұрақтар", login:"Кіру", langLabel:"Тіл", close:"Жабу",
-  eyebrow:"Тегін онлайн құттықтаулар", heroTitle:"Әдемі құттықтау <em>бір сілтемеде</em>",
-  heroText:"Үлгіні таңдаңыз, есім мен тілегіңізді жазыңыз, сілтемені WhatsApp арқылы жіберіңіз. Бұл тегін.",
-  cta1:"Үлгі таңдау", cta2:"Қалай жұмыс істейді", heroNote:"Кез келген телефонда ашылады, ештеңе орнатудың қажеті жоқ",
-  featTitle:"Бәрі бір сілтемеде",
-  feats:[["Музыка","Ашылған сәтте нәзік әуен ойнайды"],["Хатқалта және анимация","Сілтеме нағыз хат сияқты ашылады"],["Есіммен","Әр адамға есімімен арнау"],["Тегін","Қалағаныңызша жасап, жібере беріңіз"]],
-  tplTitle:"Үлгілер", tplSub:"Әзірге үшеу, жақында жаңалары қосылады.",
-  howTitle:"Қалай жұмыс істейді",
-  steps:[["Үлгіні таңдаңыз","Құттықтау немесе шақыру"],["Мәтінді жазыңыз","Есім, тілек, күні мен мекенжайы"],["Сілтемені жіберіңіз","WhatsApp арқылы бөлісіңіз"]],
+  badge:"Тегін", heroTitle:"Әдемі құттықтау <em>бір сілтемеде</em>",
+  heroText:"Үлгіні таңдаңыз, есім мен тілегіңізді жазыңыз және сілтемені WhatsApp арқылы жіберіңіз.",
+  cta1:"Құттықтау жасау", cta2:"Қалай жұмыс істейді",
+  trust:["Тегін","Қосымшасыз ашылады","Орыс, қазақ, өзбек тілдері"],
+  chat:{title:"Мадинаға арналған құттықтау", msg:"Мадина, бұл саған!"},
+  howTitle:"Үш қадам, және дайын",
+  steps:[["Үлгіні таңдаңыз","Құттықтау немесе шақыру"],["Есім мен тілекті жазыңыз","Күні мен мекенжайын қосуға болады"],["Сілтемені жіберіңіз","WhatsApp-қа бір басумен"]],
+  mini:{f1:"Есімі", v1:"Мадина", f2:"Тілек", v2:"Бақыт пен денсаулық!", send:"WhatsApp-қа жіберу", link:"shirin.day/madina"},
+  tplTitle:"Үлгілер", tplSub:"Барлық үлгілер тегін. Жақында жаңалары қосылады.",
+  filter:{all:"Барлығы", greeting:"Құттықтаулар", invite:"Шақырулар"}, pick:"Таңдау",
+  featTitle:"Ішінде не бар",
+  feats:[["Музыка","Ашылған сәтте нәзік әуен ойнайды"],["Хатқалта және анимация","Нағыз хат сияқты ашылады"],["Есіммен","Әр адамға есімімен арнау"],["Үш тіл","Орыс, қазақ және өзбек тілдері"]],
   faqTitle:"Жиі қойылатын сұрақтар",
   faq:[["Шынымен тегін бе?","Иә. Құттықтаулар мен шақыруларды жасау және жіберу тегін."],
        ["Құттықтау қалай ашылады?","Сілтемені басу жеткілікті, ол телефонда ашылады. Ештеңе орнатудың немесе тіркелудің қажеті жоқ."],
@@ -371,21 +439,26 @@ const UI = {
   ctaTitle:"Алғашқы құттықтауыңызды жасаңыз", ctaBtn:"Бастау",
   terms:"Пайдалану шарттары", privacy:"Құпиялылық саясаты", contact:"Байланыс", choose:"Осы үлгіні таңдау", free:"Тегін",
   contactText:"Сұрағыңыз болса, WhatsApp-қа жазыңыз.",
-  word:{invite:"Шақыру", greet:"Құттықтау"},
-  occ:{tugilgan:"Туған күн",tabrik:"Туған күн"},
+  soon:"Құттықтау жасауды жақында ашамыз",
+  word:{invite:"Шақыру", greeting:"Құттықтау"},
+  occ:"Туған күн",
   desc:{yasmin:"Жасмин гүлдері, ақ пен нәзік сары түстер. Жеңіл әрі жарқын құттықтау.",saroy:"Ертегі сарайы. Салтанатты құттықтау.",sham:"Шамдар мен жылы жарық. Туған күн немесе мерейтойға шақыру."},
-  ph:{birthday:"Туған күніме шақырамын", age:"25 жаста", greetTitle:"Туған күніңіз құтты болсын!", greetText:"Бақыт, денсаулық және сәттілік тілейміз", units:["күн","сағат","минут","секунд"], venueB:"Мейрамхана, Шымкент", map:"Карта"}
+  ph:{birthday:"Туған күніме шақырамын", age:"25 жаста", greetTitle:"Туған күніңіз құтты болсын!", greetText:"Бақыт, денсаулық және сәттілік тілейміз", units:["күн","сағат","минут","секунд"], open:"Ашу"}
  },
  "uz-Cyrl":{
   navTpl:"Шаблонлар", navHow:"Қандай ишлайди", navFaq:"Саволлар", login:"Кириш", langLabel:"Тил", close:"Ёпиш",
-  eyebrow:"Бепул онлайн табриклар", heroTitle:"Чиройли табрик <em>бир ҳаволада</em>",
-  heroText:"Шаблонни танланг, исм ва тилагингизни ёзинг, ҳаволани WhatsApp орқали юборинг. Бу бепул.",
-  cta1:"Шаблонни танлаш", cta2:"Қандай ишлайди", heroNote:"Ҳар қандай телефонда очилади, ҳеч нарса ўрнатиш шарт эмас",
-  featTitle:"Битта ҳаволада ҳаммаси",
-  feats:[["Мусиқа","Очилиши билан майин куй янграйди"],["Конверт ва анимация","Ҳавола ҳақиқий мактубдек очилади"],["Исм билан","Ҳар бир кишига исми билан мурожаат"],["Бепул","Хоҳлаганча яратинг ва юборинг"]],
-  tplTitle:"Шаблонлар", tplSub:"Ҳозирча учта, тез орада янгилари қўшилади.",
-  howTitle:"Қандай ишлайди",
-  steps:[["Шаблонни танланг","Табрик ёки таклифнома"],["Матнни ёзинг","Исм, тилак, сана ва манзил"],["Ҳаволани юборинг","WhatsApp орқали улашинг"]],
+  badge:"Бепул", heroTitle:"Чиройли табрик <em>бир ҳаволада</em>",
+  heroText:"Шаблонни танланг, исм ва тилагингизни ёзинг ва ҳаволани WhatsApp орқали юборинг.",
+  cta1:"Табрик яратиш", cta2:"Қандай ишлайди",
+  trust:["Бепул","Иловасиз очилади","Рус, қозоқ, ўзбек тилларида"],
+  chat:{title:"Мадина учун табрик", msg:"Мадина, бу сенга!"},
+  howTitle:"Уч қадам, ва тайёр",
+  steps:[["Шаблонни танланг","Табрик ёки таклифнома"],["Исм ва тилакни ёзинг","Сана ва манзилни ҳам қўшиш мумкин"],["Ҳаволани юборинг","WhatsApp'га бир босишда"]],
+  mini:{f1:"Исм", v1:"Мадина", f2:"Тилак", v2:"Бахт ва соғлик!", send:"WhatsApp'га юбориш", link:"shirin.day/madina"},
+  tplTitle:"Шаблонлар", tplSub:"Барча шаблонлар бепул. Тез орада янгилари қўшилади.",
+  filter:{all:"Барчаси", greeting:"Табриклар", invite:"Таклифномалар"}, pick:"Танлаш",
+  featTitle:"Ичида нималар бор",
+  feats:[["Мусиқа","Очилиши билан майин куй янграйди"],["Конверт ва анимация","Ҳақиқий мактубдек очилади"],["Исм билан","Ҳар бир кишига исми билан мурожаат"],["Уч тил","Рус, қозоқ ва ўзбек тилларида"]],
   faqTitle:"Кўп бериладиган саволлар",
   faq:[["Ростдан ҳам бепулми?","Ҳа. Табрик ва таклифномаларни яратиш ва юбориш бепул."],
        ["Табрик қандай очилади?","Ҳаволани босиш кифоя, у телефонда очилади. Ҳеч нарса ўрнатиш ёки рўйхатдан ўтиш керак эмас."],
@@ -395,10 +468,11 @@ const UI = {
   ctaTitle:"Биринчи табрикингизни яратинг", ctaBtn:"Бошлаш",
   terms:"Фойдаланиш шартлари", privacy:"Махфийлик сиёсати", contact:"Алоқа", choose:"Шу шаблонни танлаш", free:"Бепул",
   contactText:"Савол бўлса, WhatsApp'га ёзинг.",
-  word:{invite:"Таклифнома", greet:"Табрик"},
-  occ:{tugilgan:"Туғилган кун",tabrik:"Туғилган кун"},
+  soon:"Табрик яратишни тез орада очамиз",
+  word:{invite:"Таклифнома", greeting:"Табрик"},
+  occ:"Туғилган кун",
   desc:{yasmin:"Жасмин гуллари, оқ ва нафис сариқ ранглар. Енгил ва ёруғ табрик.",saroy:"Эртак қасри. Тантанали табрик.",sham:"Шамлар ва илиқ нур. Туғилган кун ёки юбилейга таклиф."},
-  ph:{birthday:"Туғилган кунимга таклиф этаман", age:"25 ёшда", greetTitle:"Туғилган кунингиз муборак!", greetText:"Бахт, соғлик ва омад тилаймиз", units:["кун","соат","дақиқа","сония"], venueB:"Ресторан, Шымкент", map:"Харита"}
+  ph:{birthday:"Туғилган кунимга таклиф этаман", age:"25 ёшда", greetTitle:"Туғилган кунингиз муборак!", greetText:"Бахт, соғлик ва омад тилаймиз", units:["кун","соат","дақиқа","сония"], open:"Очиш"}
  }
 };
 
@@ -406,19 +480,20 @@ const FEAT_ICONS = [
   '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
   '<path d="M3 7h18v12H3Z"/><path d="M3 7l9 7 9-7"/>',
   '<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>',
-  '<path d="M20 12v9H4v-9"/><path d="M2 7h20v5H2Z"/><path d="M12 21V7"/><path d="M12 7H8a2.5 2.5 0 1 1 0-5c2.5 0 4 5 4 5Zm0 0h4a2.5 2.5 0 1 0 0-5c-2.5 0-4 5-4 5Z"/>'
+  '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3Z"/>'
 ];
 
 /* ---------- Ҳолат ---------- */
-let lang = DEFAULT_LANG, current = null;
+let lang = DEFAULT_LANG, current = null, filter = "all";
 try { const s = localStorage.getItem("shirin-lang"); if (s && UI[s]) lang = s; } catch(e){}
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const tname = id => id.charAt(0).toUpperCase() + id.slice(1);          // Yasmin, Saroy, Sham
-const fword = t => UI[lang].word[t.kind === "greeting" ? "greet" : "invite"]; // Поздравление / Приглашение
+const tname = id => id.charAt(0).toUpperCase() + id.slice(1);   // Saroy, Yasmin, Sham
+const fword = t => UI[lang].word[t.kind];                       // Поздравление / Приглашение
 const waLink = () => `<a href="${WA.href}" target="_blank" rel="noopener">${WA.label}</a>`;
-const svg = (inner, cls, sw) => `<svg class="${cls||""}" viewBox="${cls==="s-icon"?"0 0 48 48":"0 0 24 24"}" fill="none" stroke="currentColor" stroke-width="${sw||2}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
+const svg = (inner, cls, sw) => `<svg class="${cls||""}" viewBox="${cls==="c-icon"?"0 0 48 48":"0 0 24 24"}" fill="none" stroke="currentColor" stroke-width="${sw||2}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
+const coverVars = t => `--cover-bg:${t.cover ? `url('${t.cover}')` : t.bg};--w:${t.w};--n:${t.n}`;
 
 function fmtDate(iso){
   const d = new Date(iso), p = n => String(n).padStart(2,"0");
@@ -426,34 +501,45 @@ function fmtDate(iso){
   return `${p(local.getDate())}.${p(local.getMonth()+1)}.${local.getFullYear()} · ${p(local.getHours())}:${p(local.getMinutes())}`;
 }
 
-/* Телефон ичидаги намуна (расмлар тайёр бўлгунча — икон) */
-function phone(t, mini){
+/* Муқова матни: асосий сўз, исм ва қисқа қатор (карточка ва телефон учун) */
+function coverText(t, full){
   const p = UI[lang].ph;
-  const head = `${svg(ICONS[t.id],"s-icon",2)}<span class="s-title">${esc(fword(t))}</span>`;
-  let body;
-  if (t.kind === "greeting"){
-    body = `${head}
-      <span class="s-names">${esc(t.names)}</span><span class="s-rule"></span>
-      <span class="s-line" style="font-weight:600">${esc(p.greetTitle)}</span>
-      <span class="s-line">${esc(p.greetText)}</span>`;
-  } else {
-    body = `${head}
-      <span class="s-names">${esc(t.names)}</span><span class="s-line">${esc(p.age)}</span>
-      <span class="s-line">${esc(p.birthday)}</span><span class="s-rule"></span>
-      <span class="s-date">${fmtDate(t.date)}</span>
-      <div class="s-cd" data-cd="${t.date}">${p.units.map(u=>`<div><b>0</b><span>${esc(u)}</span></div>`).join("")}</div>
-      ${mini ? "" : `<span class="s-venue">${esc(p.venueB)}</span><span class="s-map">${esc(p.map)}</span>`}`;
-  }
-  return `<div class="phone${mini?" mini":""}"${mini?' aria-hidden="true"':""}><div class="screen" style="--w:${t.w};--n:${t.n}">${body}<span class="s-sign">${tname(t.id)}</span></div></div>`;
+  const icon = t.cover ? "" : svg(ICONS[t.id], "c-icon", 2);
+  const line = t.kind === "greeting" ? `<span class="c-rule"></span><span class="c-line">${esc(p.greetTitle)}</span>${full ? `<span class="c-line soft">${esc(p.greetText)}</span>` : ""}`
+                                     : `<span class="c-line soft">${esc(p.age)}</span>${full ? `<span class="c-line">${esc(p.birthday)}</span>` : ""}`;
+  return `${icon}<span class="c-word">${esc(fword(t))}</span><span class="c-name">${esc(t.names)}</span>${line}`;
+}
+
+/* Телефондаги кўриниш */
+function phone(t){
+  const p = UI[lang].ph;
+  const extra = t.kind === "invite"
+    ? `<span class="c-date">${fmtDate(t.date)}</span><div class="c-cd" data-cd="${t.date}">${p.units.map(u=>`<div><b>0</b><span>${esc(u)}</span></div>`).join("")}</div>`
+    : `<span class="c-open">${esc(p.open)}</span>`;
+  return `<div class="phone"><div class="screen cover-txt" style="${coverVars(t)}">${coverText(t, true)}${extra}<span class="c-sign">${tname(t.id)}</span></div></div>`;
 }
 
 function tickCountdowns(){
   const now = Date.now();
   document.querySelectorAll("[data-cd]").forEach(el=>{
-    let ms = Math.max(0, new Date(el.dataset.cd).getTime() - now);
+    const ms = Math.max(0, new Date(el.dataset.cd).getTime() - now);
     const v = [Math.floor(ms/864e5), Math.floor(ms/36e5)%24, Math.floor(ms/6e4)%60, Math.floor(ms/1e3)%60];
     el.querySelectorAll("b").forEach((b,i)=>{ const s = String(v[i]); if (b.textContent !== s) b.textContent = s; });
   });
+}
+
+function renderCards(){
+  const d = UI[lang];
+  $("#filter").innerHTML = ["all","greeting","invite"].map(k=>`<button data-f="${k}" aria-pressed="${k===filter}">${esc(d.filter[k])}</button>`).join("");
+  $("#cards").innerHTML = TEMPLATES.filter(t => filter === "all" || t.kind === filter).map(t=>`
+    <button class="card" data-id="${t.id}">
+      <span class="cover cover-txt" style="${coverVars(t)}" aria-hidden="true">${coverText(t, false)}</span>
+      <span class="card-body">
+        <span class="card-title"><b>${esc(fword(t))}</b><span class="sign">${tname(t.id)}</span></span>
+        <span class="card-meta"><span>${esc(d.occ)}</span><span class="free">${esc(d.free)}</span></span>
+        <span class="pick">${esc(d.pick)}</span>
+      </span>
+    </button>`).join("");
 }
 
 function render(){
@@ -465,21 +551,24 @@ function render(){
   $("#sheetClose").setAttribute("aria-label", d.close);
   document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang===lang));
 
-  $("#heroPhone").innerHTML = phone(TEMPLATES[0], false);
+  $("#trust").innerHTML = d.trust.map(x=>`<li>${CHECK}<span>${esc(x)}</span></li>`).join("");
+  const hero = TEMPLATES[0];
+  $("#heroPhone").innerHTML = phone(hero);
+  $("#chat").setAttribute("style", coverVars(hero));
+  $("#chat").innerHTML = `<div class="lp"><span class="lp-img"></span><span><b>${esc(d.chat.title)}</b><span>shirin.day</span></span></div><p>${esc(d.chat.msg)}</p><span class="meta">18:30 ${TICKS}</span>`;
+
+  const m = d.mini;
+  const minis = [
+    `<div class="mini-tpl">${TEMPLATES.map((t,i)=>`<span class="${i===0?"on":""}" style="${coverVars(t)}">${t.cover ? "" : svg(ICONS[t.id],"",2).replace('viewBox="0 0 24 24"','viewBox="0 0 48 48"')}</span>`).join("")}</div>`,
+    `<div class="mini-form"><div class="focus"><small>${esc(m.f1)}</small>${esc(m.v1)}</div><div><small>${esc(m.f2)}</small>${esc(m.v2)}</div></div>`,
+    `<div class="mini-send"><span class="link">${esc(m.link)}</span><span class="wa-btn">${WA_ICON}${esc(m.send)}</span></div>`
+  ];
+  $("#steps").innerHTML = d.steps.map((s,i)=>`<li class="step"><span class="num">${i+1}</span><h3>${esc(s[0])}</h3><p>${esc(s[1])}</p><div class="mini">${minis[i]}</div></li>`).join("");
+
+  renderCards();
 
   $("#features").innerHTML = d.feats.map((f,i)=>`
     <div class="feature"><span class="ic">${svg(FEAT_ICONS[i])}</span><h3>${esc(f[0])}</h3><p>${esc(f[1])}</p></div>`).join("");
-
-  $("#gallery").innerHTML = TEMPLATES.map(t=>`
-    <button class="tpl" data-id="${t.id}">
-      ${phone(t, true)}
-      <span class="tpl-meta">
-        <span class="tpl-title"><span class="tpl-word">${esc(fword(t))}</span><span class="sign">${tname(t.id)}</span></span>
-        <span class="tpl-row"><span>${esc(d.occ[t.cat])}</span><span class="free">${esc(d.free)}</span></span>
-      </span>
-    </button>`).join("");
-
-  $("#steps").innerHTML = d.steps.map(s=>`<li><h3>${esc(s[0])}</h3><p>${esc(s[1])}</p></li>`).join("");
 
   $("#faq").innerHTML = d.faq.map(q=>`<details><summary>${esc(q[0])}</summary><p>${esc(q[1])}${q[2] ? " " + waLink() : ""}</p></details>`).join("");
 
@@ -494,8 +583,8 @@ function render(){
 
 function fillSheet(t){
   const d = UI[lang];
-  $("#sheetPhone").innerHTML = phone(t, false);
-  $("#sheetCat").textContent = d.occ[t.cat];
+  $("#sheetPhone").innerHTML = phone(t);
+  $("#sheetCat").textContent = d.occ;
   $("#sheetName").textContent = fword(t);
   $("#sheetSign").textContent = tname(t.id);
   $("#sheetDesc").textContent = d.desc[t.id];
@@ -511,6 +600,13 @@ function openSheet(id){
 }
 function closeSheet(){ current = null; if (sheet.close) sheet.close(); else sheet.removeAttribute("open"); }
 
+/* Хабарча: яратиш ва кириш ҳали ишламайди — буни очиқ айтамиз */
+let toastTimer = 0;
+function toast(msg){
+  const el = $("#toast"); el.textContent = msg; el.classList.add("show");
+  clearTimeout(toastTimer); toastTimer = setTimeout(()=>el.classList.remove("show"), 2800);
+}
+
 /* ---------- Ҳодисалар ---------- */
 document.querySelector(".lang").addEventListener("click", e=>{
   const b = e.target.closest("button[data-lang]"); if (!b) return;
@@ -518,15 +614,18 @@ document.querySelector(".lang").addEventListener("click", e=>{
   try { localStorage.setItem("shirin-lang", lang); } catch(e){}
   render();
 });
-$("#gallery").addEventListener("click", e=>{ const c = e.target.closest(".tpl"); if (c) openSheet(c.dataset.id); });
+$("#filter").addEventListener("click", e=>{ const b = e.target.closest("button[data-f]"); if (!b) return; filter = b.dataset.f; renderCards(); });
+$("#cards").addEventListener("click", e=>{ const c = e.target.closest(".card"); if (c) openSheet(c.dataset.id); });
 $("#sheetClose").addEventListener("click", closeSheet);
 $("#sheetWrap").addEventListener("click", e=>{ if (e.target.id==="sheetWrap") closeSheet(); });
 sheet.addEventListener("close", ()=>{ current = null; });
+// Кейинги босқич: Google орқали кириш (PocketBase) ва муҳаррир. Ҳозирча — «тез орада»
+document.addEventListener("click", e=>{ if (e.target.closest(".soon")) toast(UI[lang].soon); });
 window.addEventListener("scroll", ()=>$("#top").classList.toggle("scrolled", scrollY > 8), {passive:true});
-
-/* Кейинги босқич: Google орқали кириш (PocketBase) ва муҳаррир */
-$("#loginBtn").addEventListener("click", ()=>{ /* TODO: PocketBase Google OAuth */ });
-$("#chooseBtn").addEventListener("click", ()=>{ /* TODO: кириш → муҳаррир: editor.html?t=current.id */ });
+// Телефонда: биринчи экрандаги тугма кўринмай қолганда пастки тугма чиқади
+if ("IntersectionObserver" in window){
+  new IntersectionObserver(([en]) => $("#mbar").classList.toggle("show", !en.isIntersecting && en.boundingClientRect.top < 0)).observe($("#heroActions"));
+}
 
 render();
 setInterval(tickCountdowns, 1000);
